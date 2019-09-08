@@ -19,9 +19,7 @@ public class GreetingController {
     @PostMapping("/suo/upload")
     public String upload(MultipartFile file) {
         String fileName = file.getOriginalFilename();
-        byte[] bytes = new byte[0];
         try {
-            bytes = file.getBytes();
             String path = "D:\\test";
             File dest = new File(path + File.separator + fileName);
             file.transferTo(dest);
@@ -35,11 +33,9 @@ public class GreetingController {
     public String batchFileUpload(HttpServletRequest request) {
         //解析request对象，并得到一个表单项的集合
         List<MultipartFile> fileList = ((MultipartHttpServletRequest) request).getFiles("file");
-        for (int i = 0; i < fileList.size(); i++) {
-            MultipartFile file = fileList.get(i);
-            byte[] bytes = new byte[0];
+        for (MultipartFile file : fileList) {
             try {
-                bytes = file.getBytes();
+                byte[] bytes = file.getBytes();
                 FileUtils.writeByteArrayToFile(new File("D:\\test\\" + file.getOriginalFilename()), bytes);
             } catch (IOException e) {
                 e.printStackTrace();
