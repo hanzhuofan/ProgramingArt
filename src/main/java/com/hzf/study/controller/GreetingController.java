@@ -1,8 +1,10 @@
 package com.hzf.study.controller;
 
 import org.apache.commons.io.FileUtils;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -20,7 +22,7 @@ public class GreetingController {
         byte[] bytes = new byte[0];
         try {
             bytes = file.getBytes();
-            String path = "D:\\test" ;
+            String path = "D:\\test";
             File dest = new File(path + File.separator + fileName);
             file.transferTo(dest);
         } catch (IOException e) {
@@ -31,6 +33,7 @@ public class GreetingController {
 
     @PostMapping("/suo/batch")
     public String batchFileUpload(HttpServletRequest request) {
+        //解析request对象，并得到一个表单项的集合
         List<MultipartFile> fileList = ((MultipartHttpServletRequest) request).getFiles("file");
         for (int i = 0; i < fileList.size(); i++) {
             MultipartFile file = fileList.get(i);
