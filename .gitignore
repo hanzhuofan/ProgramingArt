@@ -27,3 +27,7 @@ hs_err_pid*
 .idea
 study.iml
 target
+workspace
+.project
+.classpath
+/.settings/
