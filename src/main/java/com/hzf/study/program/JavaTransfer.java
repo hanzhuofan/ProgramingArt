@@ -1,5 +1,8 @@
 package com.hzf.study.program;
 
+import java.net.URL;
+import java.net.URLClassLoader;
+
 /**
  * Java只有值传递，所谓的引用传递也是对象地址的值传递
  * Java 中的数据类型分为基本数据类型和引用数据类型。在进行赋值操作、用作方法参数或返回值时，会有值传递和引用（地址）传递的差别。
@@ -32,6 +35,28 @@ public class JavaTransfer {
         subjectB.setName("lishi");
         System.out.println("studentA:" + studentA.toString());
         System.out.println("studentB:" + studentB.toString());
+
+        try {
+            System.out.println(ClassLoader.getSystemClassLoader());
+            System.out.println(ClassLoader.getSystemClassLoader().getParent());
+            System.out.println(ClassLoader.getSystemClassLoader().getParent().getParent());
+            URL[] extURLs = ((URLClassLoader) ClassLoader.getSystemClassLoader()).getURLs();
+
+            for (int i = 0; i < extURLs.length; i++) {
+                System.out.println(extURLs[i]);
+            }
+            extURLs = ((URLClassLoader) ClassLoader.getSystemClassLoader().getParent()).getURLs();
+
+            for (int i = 0; i < extURLs.length; i++) {
+                System.out.println(extURLs[i]);
+            }
+            // 查看当前系统类路径中包含的路径条目
+            System.out.println(System.getProperty("java.class.path"));
+            Class typeLoaded = Class.forName("com.hzf.study.program.JavaTransfer");
+            System.out.println(typeLoaded.getClassLoader());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private static void test(String a) {
