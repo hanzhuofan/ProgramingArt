@@ -4,29 +4,29 @@ import java.net.URL;
 import java.net.URLClassLoader;
 
 /**
- * Java只有值传递，所谓的引用传递也是对象地址的值传递
- * Java 中的数据类型分为基本数据类型和引用数据类型。在进行赋值操作、用作方法参数或返回值时，会有值传递和引用（地址）传递的差别。
- * Java 浅拷贝和深拷贝
+ * Java只有值传递，所谓的引用传递也是对象地址的值传递 Java 中的数据类型分为基本数据类型和引用数据类型。 在进行赋值操作、用作方法参数或返回值时，会有值传递和引用（地址）传递的差别。 Java 浅拷贝和深拷贝
  *
  * @author hanzhuofan
  * @since 2020/2/18 21:01
  */
 public class JavaTransfer {
     public static void main(String[] args) {
-        String a = "123";
+        String a = "flow";
         test(a);
         System.out.println(a);
 
         int b = 123;
         test(b);
         System.out.println(b);
+        System.out.println(a.indexOf("flower"));
+        System.out.println(a.indexOf("flow"));
 
         Subject subject = new Subject("yuwen");
         Student studentA = new Student();
         studentA.setSubject(subject);
         studentA.setName("Lynn");
         studentA.setAge(20);
-        Student studentB = (Student) studentA.clone();
+        Student studentB = (Student)studentA.clone();
         studentB.setName("Lily");
         studentB.setAge(18);
         System.out.println("studentA:" + studentA.toString());
@@ -40,12 +40,12 @@ public class JavaTransfer {
             System.out.println(ClassLoader.getSystemClassLoader());
             System.out.println(ClassLoader.getSystemClassLoader().getParent());
             System.out.println(ClassLoader.getSystemClassLoader().getParent().getParent());
-            URL[] extURLs = ((URLClassLoader) ClassLoader.getSystemClassLoader()).getURLs();
+            URL[] extURLs = ((URLClassLoader)ClassLoader.getSystemClassLoader()).getURLs();
 
             for (int i = 0; i < extURLs.length; i++) {
                 System.out.println(extURLs[i]);
             }
-            extURLs = ((URLClassLoader) ClassLoader.getSystemClassLoader().getParent()).getURLs();
+            extURLs = ((URLClassLoader)ClassLoader.getSystemClassLoader().getParent()).getURLs();
 
             for (int i = 0; i < extURLs.length; i++) {
                 System.out.println(extURLs[i]);
@@ -93,9 +93,9 @@ public class JavaTransfer {
 
     static class Student implements Cloneable {
 
-        //引用类型
+        // 引用类型
         private Subject subject;
-        //基础数据类型
+        // 基础数据类型
         private String name;
         private int age;
 
@@ -130,7 +130,7 @@ public class JavaTransfer {
          */
         @Override
         public Object clone() {
-            //浅拷贝
+            // 浅拷贝
             try {
                 // 直接调用父类的clone()方法
                 return super.clone();
