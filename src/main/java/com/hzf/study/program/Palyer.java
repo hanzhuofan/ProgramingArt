@@ -12,6 +12,48 @@ public class Palyer {
     public static void main(String[] args) {
         Solution solution = new Solution();
         System.out.println(solution.isValid("()}"));;
+        Food food = new Bread();
+        Bread bread = new Bread();
+        System.out.println(food.name);
+        System.out.println(bread.name);
+        System.out.println(food.make());
+    }
+}
+
+class Food {
+
+    public String name = "Food";
+
+    private String food_name;
+
+    public Food() {}
+
+    public Food(String food_name) {
+        this.food_name = food_name;
+    }
+
+    public String make() {
+        return name;
+    };
+}
+
+class Bread extends Food {
+
+    public String name = "Bread";
+
+    private Food basic_food;
+
+    public Bread(Food basic_food) {
+        this.basic_food = basic_food;
+    }
+
+    public Bread() {
+
+    }
+
+    @Override
+    public String make() {
+        return name + "+面包";
     }
 }
 
