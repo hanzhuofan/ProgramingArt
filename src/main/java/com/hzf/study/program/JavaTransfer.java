@@ -26,7 +26,7 @@ public class JavaTransfer {
         studentA.setSubject(subject);
         studentA.setName("Lynn");
         studentA.setAge(20);
-        Student studentB = (Student)studentA.clone();
+        Student studentB = (Student) studentA.clone();
         studentB.setName("Lily");
         studentB.setAge(18);
         System.out.println("studentA:" + studentA.toString());
@@ -40,12 +40,12 @@ public class JavaTransfer {
             System.out.println(ClassLoader.getSystemClassLoader());
             System.out.println(ClassLoader.getSystemClassLoader().getParent());
             System.out.println(ClassLoader.getSystemClassLoader().getParent().getParent());
-            URL[] extURLs = ((URLClassLoader)ClassLoader.getSystemClassLoader()).getURLs();
+            URL[] extURLs = ((URLClassLoader) ClassLoader.getSystemClassLoader()).getURLs();
 
             for (int i = 0; i < extURLs.length; i++) {
                 System.out.println(extURLs[i]);
             }
-            extURLs = ((URLClassLoader)ClassLoader.getSystemClassLoader().getParent()).getURLs();
+            extURLs = ((URLClassLoader) ClassLoader.getSystemClassLoader().getParent()).getURLs();
 
             for (int i = 0; i < extURLs.length; i++) {
                 System.out.println(extURLs[i]);
@@ -60,7 +60,7 @@ public class JavaTransfer {
     }
 
     private static void test(String a) {
-        a = new String("456");
+        a = "456";
         System.out.println(a);
     }
 

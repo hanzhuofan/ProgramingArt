@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 /**
  * 输入一个数判断是否是2的幂次方，输出最接近的小于数
+ *
  * @author hanzhuofan
  * @since 2019.12
  */

@@ -11,21 +11,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 它们也无法访问到对方的ThreadLocal变量。
  */
 public class ThreadLocalTest {
-    private final ThreadLocal<String> tl = new ThreadLocal<>();
-
-    private String context;
-
-    public String getContext() {
-        return context;
-    }
-
-    public void setContext(String context) {
-        this.context = context;
-    }
-
     private static final ExecutorService SERVICE = new ThreadPoolExecutor(5, 10,
             1L, TimeUnit.SECONDS,
             new LinkedBlockingQueue<>(20), new NamedThreadFactory("test"));
+    private final ThreadLocal<String> tl = new ThreadLocal<>();
+    private String context;
 
     public static void main(String[] args) {
         ThreadLocalTest tlt = new ThreadLocalTest();
@@ -38,6 +28,14 @@ public class ThreadLocalTest {
                 System.out.println(finalI + "--tl-->" + tlt.tl.get());
             });
         }
+    }
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
     }
     /**
      * 1------>test-1-thread-3
@@ -53,24 +51,21 @@ public class ThreadLocalTest {
      */
 }
 
-class NamedThreadFactory implements ThreadFactory{
+class NamedThreadFactory implements ThreadFactory {
 
+    public final String namePrefix;
     private final AtomicInteger poolNumber = new AtomicInteger(1);
-
     private final ThreadGroup threadGroup;
-
     private final AtomicInteger threadNumber = new AtomicInteger(1);
 
-    public  final String namePrefix;
-
-    NamedThreadFactory(String name){
+    NamedThreadFactory(String name) {
         SecurityManager s = System.getSecurityManager();
         threadGroup = (s != null) ? s.getThreadGroup() :
                 Thread.currentThread().getThreadGroup();
-        if (null==name || "".equals(name.trim())){
+        if (null == name || "".equals(name.trim())) {
             name = "pool";
         }
-        namePrefix = name +"-"+
+        namePrefix = name + "-" +
                 poolNumber.getAndIncrement() +
                 "-thread-";
     }

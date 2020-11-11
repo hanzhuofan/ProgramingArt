@@ -11,7 +11,7 @@ import java.util.Stack;
 public class Palyer {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.isValid("()}"));;
+        System.out.println(solution.isValid("()}"));
         Food food = new Bread();
         Bread bread = new Bread();
         System.out.println(food.name);
@@ -26,7 +26,8 @@ class Food {
 
     private String food_name;
 
-    public Food() {}
+    public Food() {
+    }
 
     public Food(String food_name) {
         this.food_name = food_name;
@@ -34,7 +35,8 @@ class Food {
 
     public String make() {
         return name;
-    };
+    }
+
 }
 
 class Bread extends Food {
@@ -67,7 +69,7 @@ class ListNode {
 }
 
 class Solution {
-    private Map<Character, Character> map;
+    private final Map<Character, Character> map;
 
     public Solution() {
         this.map = new HashMap<>();
