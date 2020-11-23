@@ -1,5 +1,7 @@
 package com.hzf.study.program;
 
+import java.time.ZoneId;
+import java.util.TimeZone;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -28,6 +30,7 @@ public class ThreadLocalTest {
                 System.out.println(finalI + "--tl-->" + tlt.tl.get());
             });
         }
+        SERVICE.shutdown();
     }
 
     public String getContext() {
