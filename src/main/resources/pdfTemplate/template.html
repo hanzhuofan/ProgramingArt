@@ -1,0 +1,966 @@
+﻿<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <title>Itext7测试文档</title>
+    <style type="text/css">
+        body {
+            font-family: SimSun;
+            font-size: 14pt;
+            line-height: 22pt;
+            padding: 25pt 30pt 35pt 30pt;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        tr {
+            /*height: 22pt;*/
+        }
+
+        td {
+            border: 1pt solid #000000;
+            padding: 0 5pt;
+            vertical-align: middle;
+        }
+
+        p {
+            margin-top: 5pt;
+            margin-bottom: 5pt;
+        }
+
+        .tt {
+            font-size: 26pt;
+            text-align: center;
+            display: block;
+        }
+
+        .st {
+            font-size: 16pt;
+            margin-top: 15pt;
+            display: block;
+        }
+
+        .hei {
+            font-family: STHeiti;
+        }
+
+        /*@page {*/
+        /*    @bottom-center {*/
+        /*        vertical-align: top;*/
+        /*        content: "第 " counter(page) " 页 / 共 " counter(pages) " 页";*/
+        /*        margin-top: -10pt;*/
+        /*    }*/
+        /*}*/
+    </style>
+    <style type="text/css">
+        .cvg-preset-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            opacity: .85;
+        }
+
+        .cvg-preset-container.fadein {
+            display: block;
+            -webkit-animation-duration: .5s;
+            animation-duration: .5s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+        }
+
+        .cvg-preset-container .icon-camera {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            margin-left: -25px;
+            margin-top: -25px;
+        }
+
+        .cvg-preset-container .icon-camera svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .fadein {
+            -webkit-animation-name: fadeIn;
+            animation-name: fadeIn;
+        }
+    </style>
+    <link href="app.36368fcfbf639dc1fbc7c02808c03504.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="el-col el-col-24 content-wrapper-all" data-v-39eee1ee="" style="border-width: 0.5px;"><!---->
+    <div class="report-container" data-v-3799202a="" data-v-39eee1ee="">
+        <img alt="" class="report-img" data-v-3799202a="" height="50px" src="good.png" width="50px">
+        <div class="el-header" data-v-3799202a="">
+            <div class="info-content" data-v-3799202a="">
+                <img class="title-icon" data-v-3799202a="" height="10px" src="position.png"
+                     width="10px" style="float: left">
+                <span class="report-title" data-v-3799202a="" style="float: left">高新2店 现场巡检表1 (现场巡检)</span>
+                <span class="info-value" data-v-3799202a="" style="float: right">2020-12-10 10:19:18</span>
+                <span class="info-label" data-v-3799202a="" style="float: right">报告产生时间：</span>
+                <span class="info-value" data-v-3799202a="" style="float: right">高新督导</span>
+                <span class="info-label" data-v-3799202a="" style="float: right">提交人：</span>
+            </div>
+        </div>
+        <div class="el-acticle" data-v-3799202a="">
+            <div class="suggest" data-v-3799202a="">
+                <div class="suggest-content" data-v-3799202a="">
+                    <span data-v-3799202a="">巡检建议：</span>
+                    <span data-v-3799202a="" style="flex: 1 1 0%;">本次巡检各项良好</span>
+                </div>
+            </div>
+            <div class="report-content el-row" data-v-3799202a="">
+                <div class="radior-content el-col el-col-24" data-v-3799202a="">
+                    <div class="header-score" data-v-3799202a="">
+                        <span class="span-1" data-v-3799202a="">本次得分：</span>
+                        <span class="span-2" data-v-3799202a="">75
+                            <span data-v-3799202a="">分</span>
+                        </span>
+                        <span class="span-3" data-v-3799202a="">(考评总分100)</span>
+                        <span class="span-4" data-v-3799202a="">单位：个</span>
+                    </div>
+                    <div class="echarts chart-content" data-v-3799202a=""
+                         style="-webkit-tap-highlight-color: transparent;user-select: none;position: relative;">
+                        <div style="text-align: center;position: relative; height: 120px;cursor: default;">
+                            <img alt="" height="120px" src="logo.png" width="120px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-table el-row" data-v-3799202a="">
+                <div class="el-col el-col-24" data-v-3799202a="">
+                    <table class="table table-bordered" data-v-3799202a="">
+                        <thead data-v-3799202a="">
+                        <tr data-v-3799202a="">
+                            <th data-v-3799202a="" scope="col" style="width: 11%;"></th>
+                            <th data-v-3799202a="" scope="col" style="width: 20%;">项目</th>
+                            <th data-v-3799202a="" scope="col" style="width: 20%;">合格</th>
+                            <th data-v-3799202a="" scope="col" style="width: 20%;">不合格</th>
+                            <th data-v-3799202a="" scope="col" style="width: 20%;">不适用</th>
+                        </tr>
+                        </thead>
+                        <tbody data-v-3799202a="">
+                        <tr data-v-3799202a="" style="vertical-align: middle;">
+                            <td data-v-3799202a="" rowspan="8" style="vertical-align: middle;">
+                                <span data-v-3799202a="">合格率评估项</span>
+                            </td>
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">評級項目</span>
+                                <span class="count-blag" data-v-3799202a="">6</span>
+                            </td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">4</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">2</span></td>
+                        </tr>
+                        <tr data-v-3799202a="" style="background-color: rgb(247, 248, 252);">
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">合格率评估项1</span>
+                                <span class="count-blag" data-v-3799202a="">1</span>
+                            </td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">1</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td>
+                        </tr>
+                        <tr data-v-3799202a="">
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">合格率评估项2</span>
+                                <span class="count-blag" data-v-3799202a="">1</span>
+                            </td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">1</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                        </tr>
+                        <tr data-v-3799202a="" style="background-color: rgb(247, 248, 252);">
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">合格率评估项3</span>
+                                <span class="count-blag" data-v-3799202a="">1</span>
+                            </td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">1</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                        </tr>
+                        <tr data-v-3799202a="">
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">合格率评估项4</span>
+                                <span class="count-blag" data-v-3799202a="">1</span>
+                            </td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">1</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                        </tr>
+                        <tr data-v-3799202a="" style="background-color: rgb(247, 248, 252);">
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">合格率评估项5</span>
+                                <span class="count-blag" data-v-3799202a="">1</span>
+                            </td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">1</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                        </tr>
+                        <tr data-v-3799202a="">
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">合格率评估项6</span>
+                                <span class="count-blag" data-v-3799202a="">1</span>
+                            </td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">1</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                        </tr>
+                        <tr data-v-3799202a="" style="background-color: rgb(247, 248, 252);">
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">合格率评估项7</span>
+                                <span class="count-blag" data-v-3799202a="">1</span>
+                            </td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">1</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered" data-v-3799202a="">
+                        <thead data-v-3799202a=""><!---->
+                        <tr data-v-3799202a="">
+                            <th data-v-3799202a="" scope="col" style="width: 11%;"></th>
+                            <th data-v-3799202a="" scope="col" style="width: 20%;">项目</th>
+                            <th data-v-3799202a="" scope="col" style="width: 20%;">项目总分值</th>
+                            <th data-v-3799202a="" scope="col" style="width: 20%;">不适用</th>
+                            <th data-v-3799202a="" scope="col" style="width: 20%;">得分</th>
+                        </tr> <!---->
+                        </thead>
+                        <tbody data-v-3799202a="">
+                        <tr data-v-3799202a="" style="vertical-align: middle;">
+                            <td data-v-3799202a="" rowspan="5" style="vertical-align: middle;"><!---->
+                                <span data-v-3799202a="">巡检评分项</span> <!---->
+                            </td>
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">門店形象</span>
+                                <span class="count-blag" data-v-3799202a="">1</span>
+                            </td> <!----> <!---->
+                            <td data-v-3799202a=""><span data-v-3799202a="">10</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">10</span></td>
+                        </tr>
+                        <tr data-v-3799202a="" style="background-color: rgb(247, 248, 252);">
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">員工形象</span>
+                                <span class="count-blag" data-v-3799202a="">2</span>
+                            </td> <!----> <!---->
+                            <td data-v-3799202a=""><span data-v-3799202a="">10</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">1</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">10</span></td>
+                        </tr>
+                        <tr data-v-3799202a="">
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">衛生環境</span>
+                                <span class="count-blag" data-v-3799202a="">2</span>
+                            </td> <!----> <!---->
+                            <td data-v-3799202a=""><span data-v-3799202a="">10</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">1</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">10</span></td>
+                        </tr>
+                        <tr data-v-3799202a="" style="background-color: rgb(247, 248, 252);">
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">設備檢查</span>
+                                <span class="count-blag" data-v-3799202a="">1</span>
+                            </td> <!----> <!---->
+                            <td data-v-3799202a=""><span data-v-3799202a="">10</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">10</span></td>
+                        </tr>
+                        <tr data-v-3799202a="">
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">服務</span>
+                                <span class="count-blag" data-v-3799202a="">1</span>
+                            </td> <!----> <!---->
+                            <td data-v-3799202a=""><span data-v-3799202a="">10</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">10</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered" data-v-3799202a="">
+                        <thead data-v-3799202a=""><!----> <!---->
+                        <tr data-v-3799202a="">
+                            <th data-v-3799202a="" scope="col" style="width: 11%;"></th>
+                            <th data-v-3799202a="" scope="col" style="width: 20%;">项目</th>
+                            <th data-v-3799202a="" scope="col" style="width: 15%;">合格</th>
+                            <th data-v-3799202a="" scope="col" style="width: 15%;">不合格</th>
+                            <th data-v-3799202a="" scope="col" style="width: 15%;">不适用</th>
+                            <th data-v-3799202a="" scope="col" style="width: 15%;">得分</th>
+                        </tr>
+                        </thead>
+                        <tbody data-v-3799202a="">
+                        <tr data-v-3799202a="" style="vertical-align: middle;">
+                            <td data-v-3799202a="" rowspan="2" style="vertical-align: middle;"><!----> <!---->
+                                <span data-v-3799202a="">附加评分项</span>
+                            </td>
+                            <td data-v-3799202a="" style="word-break: keep-all; white-space: nowrap;">
+                                <span class="item-name" data-v-3799202a="">附加評分項目</span>
+                                <span class="count-blag" data-v-3799202a="">7</span>
+                            </td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">4</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td> <!---->
+                            <td data-v-3799202a=""><span data-v-3799202a="">3</span></td>
+                            <td data-v-3799202a=""><span data-v-3799202a="">0</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row-footer el-row" data-v-3799202a="">
+                <div class="details-content el-col el-col-6" data-v-3799202a="">
+                    <div class="details" data-v-3799202a="">
+                        <div class="item-header" data-v-3799202a="">
+                            <i class="iconfont icontemp icon-zhongxindingwei" data-v-3799202a=""></i>
+                            <span class="title-lable" data-v-3799202a="">重点关注项</span>
+                            <div class="count-content" data-v-3799202a="">
+                                <span class="count" data-v-3799202a="">0</span>
+                                <span class="blag" data-v-3799202a="">个</span>
+                            </div>
+                        </div>
+                        <div class="item-content" data-v-3799202a="">
+                            <div class="el-menuscrollbar el-scrollbar" data-v-3799202a="" style="height: 100%;">
+                                <div class="el-scrollbar__wrap" style="margin-bottom: -4px; margin-right: -4px;">
+                                    <div class="el-scrollbar__view"></div>
+                                </div>
+                                <div class="el-scrollbar__bar is-horizontal">
+                                    <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
+                                </div>
+                                <div class="el-scrollbar__bar is-vertical">
+                                    <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
+                                </div>
+                            </div> <!---->
+                        </div>
+                    </div>
+                </div>
+                <div class="details-content el-col el-col-6" data-v-3799202a="">
+                    <div class="details" data-v-3799202a="">
+                        <div class="item-header" data-v-3799202a="">
+                            <i class="iconfont icontemp icon-hulve" data-v-3799202a=""></i>
+                            <span class="title-lable" data-v-3799202a="">不适用项</span>
+                            <div class="count-content" data-v-3799202a="">
+                                <span class="count" data-v-3799202a="">7</span>
+                                <span class="blag" data-v-3799202a="">个</span>
+                            </div>
+                        </div>
+                        <div class="item-content" data-v-3799202a="">
+                            <div class="el-menuscrollbar el-scrollbar" data-v-3799202a="" style="height: 100%;">
+                                <div class="el-scrollbar__wrap" style="margin-bottom: -4px; margin-right: -4px;">
+                                    <div class="el-scrollbar__view">
+                                        <div class="item-details" data-v-3799202a="">
+                                            <div class="item-blag" data-v-3799202a=""></div>
+                                            <span class="item-name" data-v-3799202a="">銷售產品不合規</span> <span
+                                                class="item-des" data-v-3799202a=""></span></div>
+                                        <div class="item-details" data-v-3799202a="">
+                                            <div class="item-blag" data-v-3799202a=""></div>
+                                            <span class="item-name" data-v-3799202a="">販賣過期原物料、私自變更原物料製造日或到期日</span>
+                                            <span class="item-des" data-v-3799202a=""></span></div>
+                                        <div class="item-details" data-v-3799202a="">
+                                            <div class="item-blag" data-v-3799202a=""></div>
+                                            <span class="item-name" data-v-3799202a="">服裝儀容符合公司規定</span> <span
+                                                class="item-des" data-v-3799202a=""></span></div>
+                                        <div class="item-details" data-v-3799202a="">
+                                            <div class="item-blag" data-v-3799202a=""></div>
+                                            <span class="item-name" data-v-3799202a="">操作臺擺放整齊，無私人用品</span> <span
+                                                class="item-des" data-v-3799202a=""></span></div>
+                                        <div class="item-details" data-v-3799202a="">
+                                            <div class="item-blag" data-v-3799202a=""></div>
+                                            <span class="item-name" data-v-3799202a="">總部公告、比例表更新、區组會議宣達資訊正确傳達，列印公告宣導，門市伙伴閱讀签名</span>
+                                            <span class="item-des" data-v-3799202a=""></span></div>
+                                        <div class="item-details" data-v-3799202a="">
+                                            <div class="item-blag" data-v-3799202a=""></div>
+                                            <span class="item-name"
+                                                  data-v-3799202a="">每店需由二名煮茶、服務認證的人員，共4名，檢查是否滿足要求（二）</span> <span
+                                                class="item-des" data-v-3799202a=""></span></div>
+                                        <div class="item-details" data-v-3799202a="">
+                                            <div class="item-blag" data-v-3799202a=""></div>
+                                            <span class="item-name" data-v-3799202a="">整體環境乾凈，整齊，無明顯雜物</span> <span
+                                                class="item-des" data-v-3799202a=""></span></div>
+                                    </div>
+                                </div>
+                                <div class="el-scrollbar__bar is-horizontal">
+                                    <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
+                                </div>
+                                <div class="el-scrollbar__bar is-vertical">
+                                    <div class="el-scrollbar__thumb"
+                                         style="height: 70.3412%; transform: translateY(0%);"></div>
+                                </div>
+                            </div> <!----></div>
+                    </div>
+                </div>
+                <div class="details-content el-col el-col-6" data-v-3799202a="">
+                    <div class="details" data-v-3799202a="">
+                        <div class="item-header" data-v-3799202a=""><i class="iconfont icontemp icon-fankui"
+                                                                       data-v-3799202a=""></i> <span
+                                class="title-lable" data-v-3799202a="">问题反馈</span>
+                            <div class="count-content" data-v-3799202a=""><span class="count"
+                                                                                data-v-3799202a="">0</span> <span
+                                    class="blag" data-v-3799202a="">个</span></div>
+                        </div>
+                        <div class="item-content" data-v-3799202a="">
+                            <div class="el-menuscrollbar el-scrollbar" data-v-3799202a="" style="height: 100%;">
+                                <div class="el-scrollbar__wrap" style="margin-bottom: -4px; margin-right: -4px;">
+                                    <div class="el-scrollbar__view"></div>
+                                </div>
+                                <div class="el-scrollbar__bar is-horizontal">
+                                    <div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div>
+                                </div>
+                                <div class="el-scrollbar__bar is-vertical">
+                                    <div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div>
+                                </div>
+                            </div> <!---->
+                        </div>
+                    </div>
+                </div>
+                <div class="details-content el-col el-col-6" data-v-3799202a="">
+                    <div class="details" data-v-3799202a="">
+                        <div class="item-header" data-v-3799202a="">
+                            <i class="iconfont icontemp icon-fankui" data-v-3799202a=""></i>
+                            <span class="title-lable" data-v-3799202a="">签名</span>
+                        </div>
+                        <div class="item-content item-img" data-v-3799202a="">
+                            <div class="item-details" data-v-3799202a="" style="height: 100%;">
+                                <img alt="" data-v-3799202a=""
+                                     src="http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/image/20201210/inspect_101918_mEcMpDdb5irT_-1.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-detail el-row" data-v-3799202a="">
+                <div class="el-col el-col-24" data-v-3799202a="">
+                    <div class="item-header" data-v-3799202a="">
+                        <i class="iconfont icon-zhedie1 icontemp" data-v-3799202a=""
+                           style="color: rgb(235, 29, 99);"></i>
+                        <span class="title-lable" data-v-3799202a="">巡检详情</span>
+                    </div>
+                    <div class="item-content" data-v-3799202a="" style="">
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">評級項目</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        1.門市活動或行銷製作物、陳列物品與總部要求不符</p>
+                                        <p class="title2" data-v-3799202a="">
+                                            門市活動或行銷製作物、陳列物品、未經過申請同意即自行張貼舉辦或總公司公告之當期行銷活動未落實宣導</p></div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        2.擅自更換飲品價格販售或自行給予折扣優惠</p>
+                                        <p class="title2" data-v-3799202a=""></p></div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        3.門市人員因服務態度差，顧客投訴超過2次</p>
+                                        <p class="title2" data-v-3799202a="">門市人員因服務態度不佳，當月發生顧客客訴至總公司二次，經查證屬實者即可開罰</p>
+                                    </div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        4.門市人員儀容儀表不符合規範</p>
+                                        <p class="title2" data-v-3799202a="">
+                                            門市人員未穿著制服，頭髮過肩要綁，不可做美甲，無配手飾、垂釣飾耳環、無著花俏外套破褲</p></div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        5.銷售產品不合規</p>
+                                        <p class="title2" data-v-3799202a="">
+                                            銷售產品未經過SOP操作，自行更改比例表或操作方式：或使用非總公司原物料，自行購買非總公司之產品（立即開罰）</p></div>
+                                    <div class="ignore-btn" data-v-3799202a="">不适用</div> <!----> <!----> <!----></div>
+                                <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        6.販賣過期原物料、私自變更原物料製造日或到期日</p>
+                                        <p class="title2" data-v-3799202a=""></p></div>
+                                    <div class="ignore-btn" data-v-3799202a="">不适用</div> <!----> <!----> <!----></div>
+                                <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">門店形象</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        1.整體環境乾凈，整齊，無明顯雜物</p>
+                                        <p class="title2" data-v-3799202a="">地面、操作間、收銀臺及衛生死角等工作區域是否清潔，無雜物</p></div>
+                                    <!----> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：10
+                                    </div>
+                                </div> <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">員工形象</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        1.精神狀態良好，能夠主動提供服務</p>
+                                        <p class="title2" data-v-3799202a="">員工的精神狀態良好，對顧客微笑，主動向顧客提供服務</p></div> <!---->
+                                    <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：10
+                                    </div>
+                                </div> <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        2.服裝儀容符合公司規定</p>
+                                        <p class="title2" data-v-3799202a="">髮型、指甲、個人衛生符合公司規定，並保持整潔與淡妝的狀態</p></div>
+                                    <div class="ignore-btn" data-v-3799202a="">不适用</div> <!----> <!----> <!----></div>
+                                <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">衛生環境</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        1.走道乾凈整齊，無堆放雜物現象</p>
+                                        <p class="title2" data-v-3799202a="">店內各走道乾凈整潔，無堆放雜物，無擁堵現象</p></div> <!---->
+                                    <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：10
+                                    </div>
+                                </div> <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        2.操作臺擺放整齊，無私人用品</p>
+                                        <p class="title2" data-v-3799202a="">操作臺工具擺放整齊，無私人用品，工具使用完畢之後正確歸位</p></div>
+                                    <div class="ignore-btn" data-v-3799202a="">不适用</div> <!----> <!----> <!----></div>
+                                <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">設備檢查</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        1.設備按時清洗，保持潔凈</p>
+                                        <p class="title2" data-v-3799202a="">員工根據客流情況，清洗必要的設備，保持設備乾凈整潔</p></div> <!---->
+                                    <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：10
+                                    </div>
+                                </div> <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">服務</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        1.標準三聲問候服務，迎客，詢問，送客</p>
+                                        <p class="title2" data-v-3799202a="">標準的迎客聲、詢問聲、送客聲</p></div> <!----> <!---->
+                                    <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：10
+                                    </div>
+                                </div> <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">附加評分項目</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        1.門市人员上班配戴名牌</p>
+                                        <p class="title2" data-v-3799202a="">对于达成者（合格），不加分；对于未達成者（不合格）扣20分</p></div>
+                                    <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        2.總部公告、比例表更新、區组會議宣達資訊正确傳達，列印公告宣導，門市伙伴閱讀签名</p>
+                                        <p class="title2" data-v-3799202a="">对于达成者（合格），不加分；对于其中未達成者（不合格）扣20分</p></div>
+                                    <div class="ignore-btn" data-v-3799202a="">不适用</div> <!----> <!----> <!----></div>
+                                <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        3.每店需由二名煮茶、服務認證的人員，共4名，檢查是否滿足要求（一）</p>
+                                        <p class="title2" data-v-3799202a="">对于4名人员达成者（合格），不加分；对于未達成者一位（不合格）扣5分</p>
+                                    </div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        4.每店需由二名煮茶、服務認證的人員，共4名，檢查是否滿足要求（二）</p>
+                                        <p class="title2" data-v-3799202a="">对于4名人员达成者（合格），不加分；对于未達成者一位（不合格）扣6分</p>
+                                    </div>
+                                    <div class="ignore-btn" data-v-3799202a="">不适用</div> <!----> <!----> <!----></div>
+                                <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        5.每店需由二名煮茶、服務認證的人員，共4名，檢查是否滿足要求（三）</p>
+                                        <p class="title2" data-v-3799202a="">对于4名人员达成者（合格），不加分；对于未達成者一位（不合格）扣7分</p>
+                                    </div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        6.每店需由二名煮茶、服務認證的人員，共4名，檢查是否滿足要求（四）</p>
+                                        <p class="title2" data-v-3799202a="">对于4名人员达成者（合格），不加分；对于未達成者一位（不合格）扣8分</p>
+                                    </div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        7.整體環境乾凈，整齊，無明顯雜物</p>
+                                        <p class="title2" data-v-3799202a="">三次檢測優秀（合格），加5分；未達成者（不合格），不减分</p></div>
+                                    <div class="ignore-btn" data-v-3799202a="">不适用</div> <!----> <!----> <!----></div>
+                                <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">合格率评估项1</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        1.新增巡检类别</p>
+                                        <p class="title2" data-v-3799202a=""></p></div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">合格率评估项2</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        1.合格率评估项</p>
+                                        <p class="title2" data-v-3799202a=""></p></div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">合格率评估项3</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        1.合格率评估项</p>
+                                        <p class="title2" data-v-3799202a=""></p></div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">合格率评估项4</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        1.合格率评估项</p>
+                                        <p class="title2" data-v-3799202a=""></p></div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">合格率评估项5</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a=""><p class="title1" data-v-3799202a="">
+                                        1.合格率评估项</p>
+                                        <p class="title2" data-v-3799202a=""></p></div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">合格率评估项6</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a="">
+                                        <p class="title1" data-v-3799202a="">1.合格率评估项</p>
+                                        <p class="title2" data-v-3799202a=""></p>
+                                    </div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                        </div>
+                        <div data-v-3799202a=""
+                             style="border-bottom: 1px solid rgb(244, 245, 249); margin-bottom: 20px;">
+                            <div class="content-title" data-v-3799202a="">合格率评估项7</div>
+                            <div class="content-detail" data-v-3799202a="">
+                                <div class="content-detail-title" data-v-3799202a="">
+                                    <div class="detail-title" data-v-3799202a="">
+                                        <p class="title1" data-v-3799202a="">1.合格率评估项</p>
+                                        <p class="title2" data-v-3799202a=""></p>
+                                    </div> <!----> <!---->
+                                    <div class="title-btn" data-v-3799202a="">
+                                        评分：合格
+                                    </div> <!----></div> <!----></div>
+                        </div> <!----> <!----> <!---->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div>-->
+<!--    <p class="tt">-->
+<!--        <span>Itext7测试文档</span>-->
+<!--    </p>-->
+<!--    <br/>-->
+<!--    <p class="st hei">-->
+<!--        <span>1. Itext7通过html模板生成pdf文档</span>-->
+<!--    </p>-->
+<!--    <p style="text-indent:21pt;">-->
+<!--        <span>这是一个测试文档，为了测试itext7在java项目中的使用。</span>-->
+<!--    </p>-->
+<!--    <p style="text-indent:21.25pt;">-->
+<!--        <span>1)先把word模板转为html模板</span>-->
+<!--    </p>-->
+<!--    <p style="text-indent:21.25pt;">-->
+<!--        <span>2)用freemarker填充html模板中的变量</span>-->
+<!--    </p>-->
+<!--    <p style="text-indent:21.25pt;">-->
+<!--        <span>3)用itextpdf中的html2pdf把html文件转为pdf</span>-->
+<!--    </p>-->
+<!--    <p class="st hei">-->
+<!--        <span>2. 变量赋值</span>-->
+<!--    </p>-->
+<!--    <p style="text-indent:21pt;">-->
+<!--        <span>变量var1：${var1}</span>-->
+<!--    </p>-->
+<!--    <p style="text-indent:21pt;">-->
+<!--        <span>通过拼接字符串生成表格内容tab1：</span>-->
+<!--    </p>-->
+<!--    <table cellspacing="0" cellpadding="0">-->
+<!--        <tr>-->
+<!--            <td style="width:20%; text-align: center;" class="hei">-->
+<!--                <span>编号</span>-->
+<!--            </td>-->
+<!--            <td style="width:30%; text-align: center;" class="hei">-->
+<!--                <span>项目</span>-->
+<!--            </td>-->
+<!--            <td style="width:50%; text-align: center;" class="hei">-->
+<!--                <span>内容</span>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        ${tab1}-->
+<!--    </table>-->
+<!--    <img src="logo.png">-->
+<!--</div>-->
+<!--<script type="text/javascript">-->
+<!--    var mW = 300;-->
+<!--    var mH = 400;-->
+<!--    var mData = [-->
+<!--        ['评级项目', 21],-->
+<!--        ['门店形象', 56],-->
+<!--        ['员工形象', 46],-->
+<!--        ['卫生环境', 50],-->
+<!--        ['设备检查', 80],-->
+<!--        ['服务', 50],-->
+<!--        ['附加评分项目', 80]-->
+<!--    ];-->
+<!--    var mCount = mData.length; //边数-->
+<!--    var mCenter = mW / 2; //中心点-->
+<!--    var mRadius = mCenter - 50; //半径(减去的值用于给绘制的文本留空间)-->
+<!--    var mAngle = Math.PI * 2 / mCount; //角度-->
+<!--    var mCtx = null;-->
+<!--    var mColorPolygon = '#B8B8B8'; //多边形颜色-->
+<!--    var mColorLines = '#B8B8B8'; //顶点连线颜色-->
+<!--    var mColorText = '#000000';-->
+
+<!--    //初始化-->
+<!--    (function () {-->
+<!--        var canvas = document.createElement('canvas');-->
+<!--        document.body.appendChild(canvas);-->
+<!--        canvas.height = mH;-->
+<!--        canvas.width = mW;-->
+<!--        mCtx = canvas.getContext('2d');-->
+<!--        drawPolygon(mCtx);-->
+<!--        drawLines(mCtx);-->
+<!--        drawRegion(mCtx);-->
+<!--        drawText(mCtx);-->
+<!--        drawCircle(mCtx);-->
+<!--        drawLines1(mCtx)-->
+<!--    })();-->
+
+<!--    // 绘制多边形边-->
+<!--    function drawPolygon(ctx) {-->
+<!--        ctx.save();-->
+
+<!--        ctx.strokeStyle = mColorPolygon;-->
+<!--        var r = mRadius / (mCount - 2); //单位半径-->
+<!--        // var r = mRadius/ (mCount-2); //单位半径  画三个五边形-->
+<!--        //画5个圈-->
+<!--        for (var i = 0; i < mCount - 2; i++) {-->
+<!--            // for(var i = 0; i < mCount-2; i ++){ // 画三个五边形-->
+<!--            ctx.beginPath();-->
+<!--            var currR = r * (i + 1); //当前半径-->
+<!--            //画5条边-->
+<!--            for (var j = 0; j < mCount; j++) {-->
+<!--                var x = mCenter + currR * Math.cos(mAngle * j);-->
+<!--                var y = mCenter + currR * Math.sin(mAngle * j);-->
+
+<!--                ctx.lineTo(x, y);-->
+<!--            }-->
+<!--            ctx.closePath()-->
+<!--            ctx.stroke();-->
+<!--        }-->
+
+<!--        ctx.restore();-->
+<!--    }-->
+
+<!--    //顶点连线-->
+<!--    function drawLines(ctx) {-->
+<!--        ctx.save();-->
+
+<!--        ctx.beginPath();-->
+<!--        ctx.strokeStyle = mColorLines;-->
+
+<!--        for (var i = 0; i < mCount; i++) {-->
+<!--            var x = mCenter + mRadius * Math.cos(mAngle * i);-->
+<!--            var y = mCenter + mRadius * Math.sin(mAngle * i);-->
+
+<!--            ctx.moveTo(mCenter, mCenter);-->
+<!--            ctx.lineTo(x, y);-->
+<!--        }-->
+
+<!--        ctx.stroke();-->
+
+<!--        ctx.restore();-->
+<!--    }-->
+
+<!--    //数据点之间的连线-->
+<!--    function drawLines1(ctx) {-->
+<!--        ctx.save();-->
+<!--        ctx.beginPath();-->
+<!--        var count = 0;-->
+<!--        for (var i = 0; i < mCount; i++) {-->
+<!--            var x = mCenter + mRadius * Math.cos(mAngle * i) * mData[i][1] / 100;-->
+<!--            var y = mCenter + mRadius * Math.sin(mAngle * i) * mData[i][1] / 100;-->
+<!--            count = i + 1;-->
+<!--            if (count < mCount) {-->
+<!--                var x1 = mCenter + mRadius * Math.cos(mAngle * (i + 1)) * mData[i + 1][1] / 100;-->
+<!--                var y1 = mCenter + mRadius * Math.sin(mAngle * (i + 1)) * mData[i + 1][1] / 100;-->
+<!--            } else {-->
+<!--                var x1 = mCenter + mRadius * Math.cos(mAngle * 0) * mData[0][1] / 100;-->
+<!--                var y1 = mCenter + mRadius * Math.sin(mAngle * 0) * mData[0][1] / 100;-->
+<!--            }-->
+<!--            ctx.moveTo(x, y);-->
+<!--            ctx.lineTo(x1, y1);-->
+<!--            ctx.lineWidth = 2;          //设置线宽状态-->
+<!--            ctx.strokeStyle = '#1478FA';  //设置线的颜色状态-->
+<!--        }-->
+<!--        ctx.stroke();-->
+
+<!--        ctx.restore();-->
+<!--    }-->
+
+<!--    //绘制文本-->
+<!--    function drawText(ctx) {-->
+<!--        ctx.save();-->
+
+<!--        var fontSize = mCenter / 12;-->
+<!--        ctx.font = fontSize + 'px Microsoft Yahei';-->
+<!--        ctx.fillStyle = mColorText;-->
+
+<!--        for (var i = 0; i < mCount; i++) {-->
+<!--            var x = mCenter + mRadius * Math.cos(mAngle * i);-->
+<!--            var y = mCenter + mRadius * Math.sin(mAngle * i);-->
+
+<!--            if (mAngle * i >= 0 && mAngle * i <= Math.PI / 2) {-->
+<!--                ctx.fillText(mData[i][0], x, y + fontSize);-->
+<!--            } else if (mAngle * i > Math.PI / 2 && mAngle * i <= Math.PI) {-->
+<!--                ctx.fillText(mData[i][0], x - ctx.measureText(mData[i][0]).width, y + fontSize);-->
+<!--            } else if (mAngle * i > Math.PI && mAngle * i <= Math.PI * 3 / 2) {-->
+<!--                ctx.fillText(mData[i][0], x - ctx.measureText(mData[i][0]).width, y);-->
+<!--            } else {-->
+<!--                ctx.fillText(mData[i][0], x, y);-->
+<!--            }-->
+
+<!--        }-->
+<!--        //中心绘制文字-->
+<!--        // ctx.font = "bold 36px Arial"-->
+<!--        // ctx.fillStyle = '#1478FA'-->
+<!--        // ctx.fillText("75", mCenter - 18, mCenter + 16);-->
+
+<!--        ctx.restore();-->
+<!--    }-->
+
+<!--    //绘制数据区域-->
+<!--    function drawRegion(ctx) {-->
+<!--        ctx.save();-->
+
+<!--        ctx.beginPath();-->
+<!--        for (var i = 0; i < mCount; i++) {-->
+<!--            var x = mCenter + mRadius * Math.cos(mAngle * i) * mData[i][1] / 100;-->
+<!--            var y = mCenter + mRadius * Math.sin(mAngle * i) * mData[i][1] / 100;-->
+
+<!--            ctx.lineTo(x, y);-->
+<!--        }-->
+<!--        ctx.closePath();-->
+<!--        ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';-->
+<!--        ctx.fill();-->
+
+<!--        ctx.restore();-->
+<!--    }-->
+
+<!--    //画点-->
+<!--    function drawCircle(ctx) {-->
+<!--        ctx.save();-->
+
+<!--        var r = mCenter / 50;-->
+<!--        for (var i = 0; i < mCount; i++) {-->
+<!--            var x = mCenter + mRadius * Math.cos(mAngle * i) * mData[i][1] / 100;-->
+<!--            var y = mCenter + mRadius * Math.sin(mAngle * i) * mData[i][1] / 100;-->
+
+<!--            ctx.beginPath();-->
+<!--            ctx.arc(x, y, r, 0, Math.PI * 2);-->
+<!--            ctx.fillStyle = 'rgba(20, 120, 250, 0.8)';-->
+<!--            ctx.fill();-->
+<!--        }-->
+
+<!--        ctx.restore();-->
+<!--    }-->
+<!--</script>-->
+
+</body>
+</html>
