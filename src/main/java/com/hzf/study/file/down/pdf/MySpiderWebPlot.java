@@ -25,7 +25,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Collections;
 
 /**
@@ -438,6 +437,7 @@ public class MySpiderWebPlot extends SpiderWebPlot {
 //        jfreechart.addSubtitle(legendtitle);
 //        return jfreechart;
         MySpiderWebPlot spiderWebPlot = new MySpiderWebPlot(createDataset());
+        spiderWebPlot.setOutlineVisible(false);
         JFreeChart jFreeChart = new JFreeChart(spiderWebPlot);
         jFreeChart.setBorderVisible(false);
         jFreeChart.setElementHinting(false);
