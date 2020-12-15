@@ -13,11 +13,13 @@ import com.itextpdf.layout.Document;
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,6 +69,7 @@ public class PdfFile {
             output = new FileOutputStream(pdfFile);
             PdfDocument pdf = new PdfDocument(new PdfWriter(output));
             pdf.setDefaultPageSize(PageSize.A4);
+            props.setBaseUri(ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX).getPath());
             Document document = HtmlConverter.convertToDocument(html, pdf, props);
 //            PdfPage page = pdf.getPage(pdf.getNumberOfPages());
 //            PageSize pageSize = pdf.getDefaultPageSize();
