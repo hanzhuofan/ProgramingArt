@@ -49,7 +49,7 @@ public class MySpiderWebPlot extends SpiderWebPlot {
     /**
      * 最大值
      */
-    private double max = 5;
+    private double max = 1;
     private boolean webFilled = true;
 
     MySpiderWebPlot(CategoryDataset createCategoryDataset) {
@@ -160,9 +160,9 @@ public class MySpiderWebPlot extends SpiderWebPlot {
             }
             // Now actually plot each of the series polygons..
             for (int series = 0; series < seriesCount; series++) {
-                this.setSeriesPaint(new Color(253,186,64));
-                this.setSeriesOutlinePaint(new Color(253,186,64));
-                this.setSeriesOutlineStroke(new BasicStroke(1, 0, 1, 2, null, 0));
+                this.setSeriesPaint(new Color(253, 186, 64));
+                this.setSeriesOutlinePaint(new Color(253, 186, 64));
+                this.setSeriesOutlineStroke(new BasicStroke(8, 0, 1, 2, null, 0));
                 drawRadarPoly(g2, radarArea, centre, info, series, catCount, headH, headW);
             }
         } else {
@@ -238,8 +238,7 @@ public class MySpiderWebPlot extends SpiderWebPlot {
                         if (this.getDataExtractOrder() == TableOrder.BY_ROW) {
                             row = series;
                             col = cat;
-                        }
-                        else {
+                        } else {
                             row = cat;
                             col = series;
                         }
@@ -273,7 +272,7 @@ public class MySpiderWebPlot extends SpiderWebPlot {
 
         Paint paint = getSeriesPaint(series);
         g2.setPaint(paint);
-        g2.setStroke(new BasicStroke(4, 0, 1, 2, null, 0));
+        g2.setStroke(new BasicStroke(8, 0, 1, 2, null, 0));
         g2.draw(polygon);
 
         // Lastly, fill the web polygon if this is required
@@ -281,7 +280,7 @@ public class MySpiderWebPlot extends SpiderWebPlot {
         if (this.webFilled) {
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
                     0.1f));
-            g2.setPaint(new Color(215,229,253));
+            g2.setPaint(new Color(70, 130, 180));
             g2.fill(polygon);
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
                     getForegroundAlpha()));
@@ -386,22 +385,22 @@ public class MySpiderWebPlot extends SpiderWebPlot {
 
     public static void main(String args[]) {
         //在SWING中显示
-        JFrame jf = new JFrame();
-        jf.add(erstelleSpinnenDiagramm());
-        jf.pack();
-        jf.setVisible(true);
+//        JFrame jf = new JFrame();
+//        jf.add(erstelleSpinnenDiagramm());
+//        jf.pack();
+//        jf.setVisible(true);
         //将JFreeChart保存为图片存在文件路径中
-        saveAsFile("C:\\tmp\\logo.png", 300, 300);
+        saveAsFile(createDataset(), "C:\\tmp\\logo.png", 1920, 1080);
     }
 
     public static JPanel erstelleSpinnenDiagramm() {
-        JFreeChart jfreechart = createChart();
+        JFreeChart jfreechart = createChart(createDataset());
         ChartPanel chartpanel = new ChartPanel(jfreechart);
         return chartpanel;
     }
 
 
-    public static void saveAsFile(String outputPath,
+    public static void saveAsFile(DefaultCategoryDataset dataset, String outputPath,
                                   int weight, int height) {
         FileOutputStream out = null;
         try {
@@ -412,9 +411,10 @@ public class MySpiderWebPlot extends SpiderWebPlot {
             out = new FileOutputStream(outputPath);
 
             // 保存为PNG
-            ChartUtils.writeChartAsPNG(out, createChart(), weight, height);
+            JFreeChart chart = createChart(dataset);
+            ChartUtils.writeChartAsJPEG(out, 0.5f, chart, weight, height);
             // 保存为JPEG
-            // ChartUtilities.writeChartAsJPEG(out, chart, 500, 400);
+//            ChartUtils.writeChartAsJPEG(out, createChart(), weight, height);
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -429,15 +429,22 @@ public class MySpiderWebPlot extends SpiderWebPlot {
         }
     }
 
-    public static JFreeChart createChart() {
+    public static JFreeChart createChart(DefaultCategoryDataset dataset) {
 //        MySpiderWebPlot spiderwebplot = new MySpiderWebPlot(createDataset());
 //        JFreeChart jfreechart = new JFreeChart("前三个季度水果销售报告", TextTitle.DEFAULT_FONT, spiderwebplot, false);
 //        LegendTitle legendtitle = new LegendTitle(spiderwebplot);
 //        legendtitle.setPosition(RectangleEdge.BOTTOM);
 //        jfreechart.addSubtitle(legendtitle);
 //        return jfreechart;
-        MySpiderWebPlot spiderWebPlot = new MySpiderWebPlot(createDataset());
+        MySpiderWebPlot spiderWebPlot = new MySpiderWebPlot(dataset);
         spiderWebPlot.setOutlineVisible(false);
+        spiderWebPlot.setBaseSeriesOutlinePaint(Color.WHITE);
+        spiderWebPlot.setOutlinePaint(Color.WHITE);
+        spiderWebPlot.setSeriesOutlinePaint(Color.WHITE);
+        spiderWebPlot.setBackgroundPaint(Color.WHITE);
+        spiderWebPlot.setLabelFont(new Font("黑体", Font.BOLD, 48));
+        spiderWebPlot.setLabelPaint(Color.gray);
+        spiderWebPlot.setAxisLineStroke(new BasicStroke(8, 0, 1, 2, null, 0));
         JFreeChart jFreeChart = new JFreeChart(spiderWebPlot);
         jFreeChart.setBorderVisible(false);
         jFreeChart.setElementHinting(false);
@@ -449,13 +456,13 @@ public class MySpiderWebPlot extends SpiderWebPlot {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         String group1 = "苹果 ";
 
-        dataset.addValue(5, group1, "一月份");
-        dataset.addValue(5, group1, "二月份");
-        dataset.addValue(5, group1, "三月份");
-        dataset.addValue(4, group1, "四月份");
-        dataset.addValue(3, group1, "五月份");
-        dataset.addValue(2, group1, "六月份");
-        dataset.addValue(1, group1, "七月份");
+        dataset.addValue(1, group1, "合格率评估项1");
+        dataset.addValue(1, group1, "合格率评估项2");
+        dataset.addValue(1, group1, "合格率评估项3");
+        dataset.addValue(0.8, group1, "合格率评估项4");
+        dataset.addValue(0.33, group1, "合格率评估项5");
+        dataset.addValue(0.5, group1, "合格率评估项6");
+        dataset.addValue(0.2, group1, "合格率评估项7");
         return dataset;
     }
 }

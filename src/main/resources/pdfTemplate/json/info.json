@@ -1,0 +1,288 @@
+{
+  "errCode": 0,
+  "errMsg": "Success",
+  "data": [
+    {
+      "id": 1939,
+      "info": {
+        "comment": "本次巡检各项良好",
+        "summary": [
+          {
+            "groupId": 1184,
+            "type": 0,
+            "groupName": "評級項目",
+            "numOfIgnored": 1,
+            "numOfQualifiedItems": 5,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 6,
+            "totalScore": 5,
+            "actualScore": 5
+          },
+          {
+            "groupId": 1185,
+            "type": 1,
+            "groupName": "門店形象",
+            "numOfIgnored": 0,
+            "numOfQualifiedItems": 1,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 1,
+            "totalScore": 10,
+            "actualScore": 10
+          },
+          {
+            "groupId": 1186,
+            "type": 1,
+            "groupName": "員工形象",
+            "numOfIgnored": 0,
+            "numOfQualifiedItems": 2,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 2,
+            "totalScore": 20,
+            "actualScore": 20
+          },
+          {
+            "groupId": 1187,
+            "type": 1,
+            "groupName": "衛生環境",
+            "numOfIgnored": 0,
+            "numOfQualifiedItems": 2,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 2,
+            "totalScore": 20,
+            "actualScore": 20
+          },
+          {
+            "groupId": 1188,
+            "type": 1,
+            "groupName": "設備檢查",
+            "numOfIgnored": 0,
+            "numOfQualifiedItems": 1,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 1,
+            "totalScore": 10,
+            "actualScore": 10
+          },
+          {
+            "groupId": 1189,
+            "type": 1,
+            "groupName": "服務",
+            "numOfIgnored": 0,
+            "numOfQualifiedItems": 1,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 1,
+            "totalScore": 10,
+            "actualScore": 10
+          },
+          {
+            "groupId": 1190,
+            "type": 2,
+            "groupName": "附加評分項目",
+            "numOfIgnored": 2,
+            "numOfQualifiedItems": 5,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 7,
+            "totalScore": -45,
+            "actualScore": 5
+          },
+          {
+            "groupId": 1191,
+            "type": 0,
+            "groupName": "合格率评估项1",
+            "numOfIgnored": 0,
+            "numOfQualifiedItems": 1,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 1,
+            "totalScore": 1,
+            "actualScore": 1
+          },
+          {
+            "groupId": 1192,
+            "type": 0,
+            "groupName": "合格率评估项2",
+            "numOfIgnored": 0,
+            "numOfQualifiedItems": 1,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 1,
+            "totalScore": 1,
+            "actualScore": 1
+          },
+          {
+            "groupId": 1193,
+            "type": 0,
+            "groupName": "合格率评估项3",
+            "numOfIgnored": 0,
+            "numOfQualifiedItems": 1,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 1,
+            "totalScore": 1,
+            "actualScore": 1
+          },
+          {
+            "groupId": 1194,
+            "type": 0,
+            "groupName": "合格率评估项4",
+            "numOfIgnored": 0,
+            "numOfQualifiedItems": 1,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 1,
+            "totalScore": 1,
+            "actualScore": 1
+          },
+          {
+            "groupId": 1195,
+            "type": 0,
+            "groupName": "合格率评估项5",
+            "numOfIgnored": 0,
+            "numOfQualifiedItems": 1,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 1,
+            "totalScore": 1,
+            "actualScore": 1
+          },
+          {
+            "groupId": 1196,
+            "type": 0,
+            "groupName": "合格率评估项6",
+            "numOfIgnored": 0,
+            "numOfQualifiedItems": 1,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 1,
+            "totalScore": 1,
+            "actualScore": 1
+          },
+          {
+            "groupId": 1197,
+            "type": 0,
+            "groupName": "合格率评估项7",
+            "numOfIgnored": 0,
+            "numOfQualifiedItems": 1,
+            "numOfUnqualifiedItems": 0,
+            "numOfTotalItems": 1,
+            "totalScore": 1,
+            "actualScore": 1
+          }
+        ],
+        "ignoredItems": [
+          {
+            "id": 3210,
+            "name": "銷售產品不合規"
+          },
+          {
+            "id": 3222,
+            "name": "每店需由二名煮茶、服務認證的人員，共4名，檢查是否滿足要求（二）"
+          },
+          {
+            "id": 3224,
+            "name": "每店需由二名煮茶、服務認證的人員，共4名，檢查是否滿足要求（四）"
+          }
+        ],
+        "focalItems": [
+          {
+            "id": 3146,
+            "name": "門市活動或行銷製作物、陳列物品與總部要求不符",
+            "description": "門市活動或行銷製作物、陳列物品、未經過申請同意即自行張貼舉辦或總公司公告之當期行銷活動未落實宣導",
+            "itemScore": 10,
+            "grade": 0,
+            "comment": "测试通过\npass\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九",
+            "type": 0,
+            "attachment": [
+              {
+                "deviceId": -1,
+                "mediaType": 0,
+                "url": "http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/audio/20201215/inspect_091340_PYWGyUmb3Bdg_3146_0.aac"
+              },
+              {
+                "deviceId": -1,
+                "mediaType": 2,
+                "url": "http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/image/20201215/inspect_091340_PYWGyUmb3Bdg_3146_1.jpg"
+              },
+              {
+                "deviceId": -1,
+                "mediaType": 1,
+                "url": "http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/video/20201215/inspect_091340_PYWGyUmb3Bdg_3146_2.mp4"
+              },
+              {
+                "deviceId": -1,
+                "mediaType": 2,
+                "url": "http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/image/20201215/inspect_091340_PYWGyUmb3Bdg_3146_3.jpg"
+              }
+            ]
+          },
+          {
+            "id": 3154,
+            "name": "服裝儀容符合公司規定",
+            "description": "髮型、指甲、個人衛生符合公司規定，並保持整潔與淡妝的狀態",
+            "itemScore": 10,
+            "grade": 8,
+            "comment": "测试通过\npass\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九",
+            "type": 1,
+            "attachment": [
+              {
+                "deviceId": -1,
+                "mediaType": 2,
+                "url": "http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/image/20201215/inspect_091340_PYWGyUmb3Bdg_3154_4.jpg"
+              }
+            ]
+          }
+        ],
+        "feedback": [
+          {
+            "id": 5691,
+            "subject": "Android现场巡检问题反馈",
+            "description": "测试通过\npass\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九",
+            "attachment": [
+              {
+                "deviceId": -1,
+                "mediaType": 0,
+                "url": "http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/audio/20201215/inspect_095338_mEcMpDdb5irT_-1_0.aac"
+              },
+              {
+                "deviceId": -1,
+                "mediaType": 1,
+                "url": "http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/video/20201215/inspect_095338_mEcMpDdb5irT_-1_1.mp4"
+              },
+              {
+                "deviceId": -1,
+                "mediaType": 2,
+                "url": "http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/image/20201215/inspect_095338_mEcMpDdb5irT_-1_2.jpg"
+              },
+              {
+                "deviceId": -1,
+                "mediaType": 1,
+                "url": "http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/video/20201215/inspect_095338_mEcMpDdb5irT_-1_3.mp4"
+              },
+              {
+                "deviceId": -1,
+                "mediaType": 2,
+                "url": "http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/image/20201215/inspect_095338_mEcMpDdb5irT_-1_4.jpg"
+              }
+            ]
+          },
+          {
+            "id": 5692,
+            "subject": "Android现场巡检问题反馈名称为空",
+            "description": "测试通过\npass\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九",
+            "attachment": []
+          },
+          {
+            "id": 5693,
+            "subject": "Android现场巡检问题反馈测试",
+            "description": "测试通过\npass\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十\n一二三四五六七八九十",
+            "attachment": [
+              {
+                "deviceId": -1,
+                "mediaType": 1,
+                "url": "http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/video/20201215/inspect_095338_mEcMpDdb5irT_-1_5.mp4"
+              }
+            ]
+          }
+        ],
+        "signature": {
+          "type": 2,
+          "content": "http://viumo-n3azju2aknpw.oss-cn-beijing.aliyuncs.com/image/20201215/inspect_095338_mEcMpDdb5irT_5.jpg"
+        },
+        "totalScore": 75
+      }
+    }
+  ]
+}
