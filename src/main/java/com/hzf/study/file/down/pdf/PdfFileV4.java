@@ -131,6 +131,7 @@ public class PdfFileV4 {
         para.put("storeName", detail.getStoreName());
         para.put("tagName", detail.getTagName().substring(0, detail.getTagName().length() - 2));
         para.put("mode", detail.getMode() == 0 ? "远程巡检" : "现场巡检");
+        para.put("modePic", detail.getMode() == 0 ? "./pdfTemplate/static/image/yuancheng.png" : "./pdfTemplate/static/image/position.png");
         para.put("ts", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(detail.getTs()));
         para.put("submitterName", detail.getSubmitterName());
         para.put("comment", detail.getComment());
@@ -339,7 +340,7 @@ public class PdfFileV4 {
             "                            </div>\n" +
             "                        </div>\n" +
             "                        <div class=\"item-content item-img\" data-v-3799202a=\"\">\n" +
-            "                            <img alt=\"\" data-v-3799202a=\"\" height=\"130px\" width=\"140px\"\n" +
+            "                            <img alt=\"\" data-v-3799202a=\"\" height=\"158px\" width=\"151px\"\n" +
             "                                 src=\"${content}\">\n" +
             "                        </div>\n" +
             "                    </div>\n" +
