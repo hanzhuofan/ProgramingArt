@@ -164,7 +164,7 @@ public class PdfFileV4 {
     private static final String FEEDBACK_ITEM =
             "                            <div data-v-3799202a=\"\" class=\"content-detail\">\n" +
             "                                <div data-v-3799202a=\"\" class=\"content-detail-title\"\n" +
-            "                                     style=\"background-color: rgb(255, 255, 255); min-height: 30px;" +
+            "                                     style=\"background-color: rgb(255, 255, 255); min-height: 20px;" +
             "\">\n" +
             "                                    <div data-v-3799202a=\"\" class=\"detail-title\">\n" +
             "                                        <p data-v-3799202a=\"\" class=\"title1\">${subject}</p>\n" +
@@ -244,11 +244,11 @@ public class PdfFileV4 {
     private static final String COMMENT = "<div data-v-3799202a=\"\" class=\"cdm-word\">\n" +
             "                                        <span data-v-3799202a=\"\">${comment}</span>\n" +
             "                                    </div>\n";
-    private static final String PIC = "<div data-v-3799202a=\"\" style=\"height:75px;\" class=\"source-details\">\n" +
+    private static final String PIC = "<div data-v-3799202a=\"\" style=\"height:50px;\" class=\"source-details\">\n" +
             "                                            <div data-v-3799202a=\"\" class=\"img-content\">\n" +
             "                                                <img data-v-3799202a=\"\" title=\"\"\n" +
             "                                                     src=\"${url}\"\n" +
-            "                                                     style=\"height:75px;\"\n" +
+            "                                                     style=\"height:50px;\"\n" +
             "                                                     class=\"imgLittle imgInner\">\n" +
             "                                            </div> <!---->\n" +
             "                                        </div>";
@@ -340,7 +340,7 @@ public class PdfFileV4 {
             "                            </div>\n" +
             "                        </div>\n" +
             "                        <div class=\"item-content item-img\" data-v-3799202a=\"\">\n" +
-            "                            <img alt=\"\" data-v-3799202a=\"\" height=\"158px\" width=\"151px\"\n" +
+            "                            <img alt=\"\" data-v-3799202a=\"\" height=\"157px\" width=\"151px\"\n" +
             "                                 src=\"${content}\">\n" +
             "                        </div>\n" +
             "                    </div>\n" +

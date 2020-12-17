@@ -13187,6 +13187,7 @@ input[type=color].form-control[data-v-3799202a]:disabled {
 }
 
 .report-container .el-header .info-content .report-title[data-v-3799202a] {
+    font-size: 1.25em;
     font-weight: 700;
     margin-left: 11px;
 }
@@ -13235,7 +13236,7 @@ input[type=color].form-control[data-v-3799202a]:disabled {
 }
 
 .report-container .el-acticle .report-content .radior-content[data-v-3799202a] {
-    height: 170px
+    height: 180px
 }
 
 .report-container .el-acticle .report-content .radior-content .header-score[data-v-3799202a] {
@@ -13409,7 +13410,7 @@ input[type=color].form-control[data-v-3799202a]:disabled {
 }
 
 .report-container .el-acticle .row-footer .details-content[data-v-3799202a] {
-    padding-right: 1.04167vw
+    padding-right: 4px
 }
 
 .report-container .el-acticle .row-footer .details-content[data-v-3799202a]:last-child {
@@ -13460,7 +13461,7 @@ input[type=color].form-control[data-v-3799202a]:disabled {
 
 .report-container .el-acticle .row-footer .details .item-content[data-v-3799202a] {
     /*padding-top: 10px;*/
-    height: 140px;
+    height: 150px;
     position: relative
 }
 
@@ -13479,7 +13480,7 @@ input[type=color].form-control[data-v-3799202a]:disabled {
     line-height: 2.6;
     display: inline-block;
     vertical-align: top;
-    font-size: 6px;
+    /*font-size: 6px;*/
 }
 
 .report-container .el-acticle .row-footer .details .item-content .item-details .item-name .item-blag[data-v-3799202a] {
@@ -13580,7 +13581,7 @@ input[type=color].form-control[data-v-3799202a]:disabled {
     width: 40px;
     height: 18px;
     background-color: #434c5e;
-    font-size: 10px;
+    /*font-size: 10px;*/
     color: #fff;
     font-weight: 700;
     line-height: 18px;
@@ -13591,17 +13592,17 @@ input[type=color].form-control[data-v-3799202a]:disabled {
 }
 
 .report-container .el-acticle .row-detail .item-content .content-detail .content-detail-title .title-btn[data-v-3799202a] {
-    width: 80px;
+    width: 70px;
     height: 18px;
     background-color: #fcba3f;
-    font-size: 10px;
+    /*font-size: 10px;*/
     color: #fff;
     font-weight: 700;
     line-height: 18px;
     text-align: center;
     border-radius: 8px;
     float: right;
-    margin: 6px 12px 0 0;
+    margin: 6px 15px 0 0;
 }
 
 .report-container .el-acticle .row-detail .item-content .content-detail .content-detail-title .detail-title[data-v-3799202a] {
@@ -13614,12 +13615,13 @@ input[type=color].form-control[data-v-3799202a]:disabled {
 .report-container .el-acticle .row-detail .item-content .content-detail .content-detail-title .detail-title .title1[data-v-3799202a] {
     color: #182752;
     font-weight: 700;
+    padding-left: 10px;
     margin: 0 0 0 0
 }
 
 .report-container .el-acticle .row-detail .item-content .content-detail .content-detail-title .detail-title .title2[data-v-3799202a] {
     color: #7d8cad;
-    padding-left: 5px;
+    padding-left: 15px;
     margin: 0 0 0 0
 }
 
@@ -13640,20 +13642,20 @@ input[type=color].form-control[data-v-3799202a]:disabled {
 }
 
 .report-container .el-acticle .row-detail .item-content .content-detail .content-detail-main .cdm-voice .speech-info[data-v-3799202a] {
-    width: 5rem;
-    height: 1.625rem;
+    width: 2.5rem;
+    height: 1rem;
+    line-height: 1rem;
     background-color: #ffeded;
     color: #f31d65;
     border: 1px solid #fec0c7;
-    border-radius: 11px;
+    border-radius: 8px;
     display: inline-block;
-    cursor: pointer
+    cursor: pointer;
+    padding-left: 3px;
 }
 
 .report-container .el-acticle .row-detail .item-content .content-detail .content-detail-main .cdm-voice .speech-info .icon-speech[data-v-3799202a] {
-    font-size: 1.125rem;
-    line-height: 1.625rem;
-    margin-left: .3125rem
+    font-size: 0.6rem;
 }
 
 .report-container .el-acticle .row-detail .item-content .content-detail .content-detail-main .cdm-voice .often-text[data-v-3799202a] {
@@ -13666,7 +13668,8 @@ input[type=color].form-control[data-v-3799202a]:disabled {
 }
 
 .report-container .el-acticle .row-detail .item-content .content-detail .content-detail-main .cdm-pic .source-details[data-v-3799202a] {
-    display: inline-block
+    display: inline-block;
+    padding-right: 3px;
 }
 
 .report-container .el-acticle .row-detail .item-content .content-detail .content-detail-main .cdm-pic .source-details .img-content[data-v-3799202a] {
