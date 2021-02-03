@@ -1,5 +1,7 @@
 package com.hzf.study.design.singleton;
 
+import org.joda.time.DateTime;
+
 /**
  * @Author zhuofan.han
  * @Date 2020/11/23 14:12
@@ -18,5 +20,10 @@ public class SingletonPatternDemo {
         object.showMessage();
 
         Singleton.INSTANCE.showMessage();
+
+        DateTime nowTime = DateTime.now();
+        DateTime startOfDay = nowTime.withTimeAtStartOfDay();
+        System.out.println(nowTime);
+        System.out.println(startOfDay);
     }
 }

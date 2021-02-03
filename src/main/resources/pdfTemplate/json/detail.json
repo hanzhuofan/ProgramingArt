@@ -5,11 +5,11 @@
     "id": 1939,
     "ts": 1607997218115,
     "mode": 1,
-    "tagName": "现场巡检表1报告",
+    "tagName": "test",
     "storeId": "mEcMpDdb5irT",
-    "storeName": "高新2店",
+    "storeName": "test",
     "submitter": "ZK7M2aDrgFVM",
-    "submitterName": "高新督导",
+    "submitterName": "def高新督导abc",
     "status": 1,
     "comment": "本次巡检各项良好",
     "groups": [
@@ -20,7 +20,7 @@
         "items": [
           {
             "id": 20182,
-            "subject": "門市活動或行銷製作物、陳列物品與總部要求不符",
+            "subject": "門市活動或行銷test製作物、陳列物品與總部要求不符",
             "description": "門市活動或行銷製作物、陳列物品、未經過申請同意即自行張貼舉辦或總公司公告之當期行銷活動未落實宣導",
             "grade": 1,
             "itemScore": 10,

@@ -130,7 +130,7 @@ public class PdfFileV4 {
         para.put("reportStatus", path);
         para.put("storeName", detail.getStoreName());
         para.put("tagName", detail.getTagName().substring(0, detail.getTagName().length() - 2));
-        para.put("mode", detail.getMode() == 0 ? "远程巡检" : "现场巡检");
+        para.put("mode", detail.getMode() == 0 ? "远程巡检" : "def现场巡检abc");
         para.put("modePic", detail.getMode() == 0 ? "./pdfTemplate/static/image/yuancheng.png" : "./pdfTemplate/static/image/position.png");
         para.put("ts", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(detail.getTs()));
         para.put("submitterName", detail.getSubmitterName());
@@ -234,12 +234,6 @@ public class PdfFileV4 {
             "                                            <i data-v-3799202a=\"\" class=\"iconfont icon-yuyin " +
             "icon-speech\"></i>\n" +
             "                                        </div>\n" +
-            "                                        <audio data-v-3799202a=\"\">\n" +
-            "                                            <source data-v-3799202a=\"\"\n" +
-            "                                                    src=\"http://viumo-n3azju2aknpw.oss-cn-beijing" +
-            ".aliyuncs.com/audio/20201214/inspect_102918_TuSkNXdpfhnL_3157_0.aac\"\n" +
-            "                                                    type=\"audio/mpeg\">\n" +
-            "                                        </audio>\n" +
             "                                    </div>";
     private static final String COMMENT = "<div data-v-3799202a=\"\" class=\"cdm-word\">\n" +
             "                                        <span data-v-3799202a=\"\">${comment}</span>\n" +
@@ -348,7 +342,7 @@ public class PdfFileV4 {
 
     private static String buildSignature(InspectSignatureResponse signature) {
         if (signature == null) {
-            return null;
+            return "";
         }
         StringBuilder sb = new StringBuilder();
         String tmp = sign;
