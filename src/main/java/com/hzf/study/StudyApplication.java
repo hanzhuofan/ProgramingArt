@@ -1,8 +1,10 @@
 package com.hzf.study;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@MapperScan({"com.hzf.study.security.mapper*"})
 @SpringBootApplication
 public class StudyApplication {
 

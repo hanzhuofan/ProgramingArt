@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -96,7 +98,10 @@ public class PiePlotChart extends PiePlot {
 //            plot.setAutoPopulateSectionPaint(false);
             //设置标签生成器(默认{0})
             //{0}:key {1}:value {2}:百分比 {3}:sum
-            plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0}({1}票){2}"));
+            NumberFormat percentInstance = NumberFormat.getPercentInstance();
+            percentInstance.setRoundingMode(RoundingMode.FLOOR);
+            percentInstance.setMaximumFractionDigits(2);
+            plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0}({1}票){2}", NumberFormat.getNumberInstance(), percentInstance));
 
             /**
              * 设置开始角度(弧度计算)

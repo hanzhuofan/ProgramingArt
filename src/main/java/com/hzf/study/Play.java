@@ -20,6 +20,8 @@ import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -102,6 +104,21 @@ public class Play {
         System.out.println(RuntimeUtils.getTotalPhysicalMemorySize());
         System.out.println(RuntimeUtils.getFreePhysicalMemorySize());
         System.out.println(RuntimeUtils.getUsedPhysicalMemorySize());
+
+        System.out.println((7 & 1) != 0);
+        System.out.println(7 & 2);
+        System.out.println(7 & 4);
+        System.out.println(2 & 4);
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(localDateTime);
+        System.out.println(localDateTime.atZone(ZoneOffset.systemDefault()).toInstant());
+        System.out.println(localDateTime.atZone(ZoneOffset.systemDefault()).toInstant().toEpochMilli());
+        System.out.println(System.currentTimeMillis());
+
+        String[] split = "asda  s".split("");
+        List<String> collect = Stream.of(split).collect(Collectors.toList());
+        System.out.println(collect);
 
 //        for (int i = 0; i < 4; i++) {
 //            new Thread(() -> {
