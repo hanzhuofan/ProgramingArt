@@ -120,6 +120,8 @@ public class Play {
         List<String> collect = Stream.of(split).collect(Collectors.toList());
         System.out.println(collect);
 
+
+
 //        for (int i = 0; i < 4; i++) {
 //            new Thread(() -> {
 //                while (true) {
