@@ -77,14 +77,8 @@ public class Play {
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext();
 
-        System.out.println(DateFormat.getInstance().format(DateHelper.getEndOfDay(now)));
-        System.out.println(DateFormat.getInstance().format(DateHelper.getEndOfDay(DateHelper.getStartOfDay(now) - 1000)));
-        System.out.println(DateFormat.getInstance().format(DateHelper.getStartOfWeek(DateHelper.getLastWeek(now))));
-        System.out.println(DateFormat.getInstance().format(DateHelper.getStartOfWeek(now)));
-        System.out.println(DateFormat.getInstance().format(DateHelper.getStartOfWeek(DateHelper.getNextWeek(now))));
-        System.out.println(DateFormat.getInstance().format(DateHelper.getLastMonth(now)));
-        System.out.println(DateFormat.getInstance().format(DateHelper.getStartOfMonth(now)));
-        System.out.println(DateFormat.getInstance().format(DateHelper.getNextMonth(now)));
+        System.out.println(DateFormat.getInstance().format(now));
+        System.out.println(DateFormat.getInstance().format(DateHelper.getAmountMonth(DateHelper.getAmountDay(now, -4), 7)));
 
         Set<Test> set = new HashSet<>();
         set.add(new Test(1, 2));

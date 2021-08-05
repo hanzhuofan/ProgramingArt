@@ -36,6 +36,13 @@ public class DateHelper {
         return calendarEnd.getTimeInMillis();
     }
 
+    public static Long getAmountDay(Long ts, Integer amount) {
+        Calendar calendarEnd = Calendar.getInstance();
+        calendarEnd.setTime(new Date(ts));
+        calendarEnd.add(Calendar.DATE, amount);
+
+        return calendarEnd.getTimeInMillis();
+    }
 
     public static Long getLastDay(Long ts) {
         Calendar calendarEnd = Calendar.getInstance();
@@ -52,18 +59,6 @@ public class DateHelper {
         firstDayOfMonth.set(Calendar.MINUTE, 0);
         firstDayOfMonth.set(Calendar.SECOND, 0);
         firstDayOfMonth.set(Calendar.DAY_OF_MONTH, 1);
-
-        firstDayOfMonth.set(Calendar.MILLISECOND, 0);
-        return firstDayOfMonth.getTime().getTime();
-    }
-
-    public static Long getStartOfYear(Long ts) {
-        Calendar firstDayOfMonth = Calendar.getInstance();
-        firstDayOfMonth.setTime(new Date(ts));
-        firstDayOfMonth.set(Calendar.HOUR_OF_DAY, 0);
-        firstDayOfMonth.set(Calendar.MINUTE, 0);
-        firstDayOfMonth.set(Calendar.SECOND, 0);
-        firstDayOfMonth.set(Calendar.DAY_OF_YEAR, 1);
 
         firstDayOfMonth.set(Calendar.MILLISECOND, 0);
         return firstDayOfMonth.getTime().getTime();
@@ -92,14 +87,12 @@ public class DateHelper {
         return firstDayOfMonth.getTime().getTime();
     }
 
-    public static Long getNextYear(Long ts) {
-        Long firstDay = getStartOfYear(ts);
+    public static Long getAmountMonth(Long ts, Integer amount) {
+        Calendar calendarEnd = Calendar.getInstance();
+        calendarEnd.setTime(new Date(ts));
+        calendarEnd.add(Calendar.MONTH, amount);
 
-        Calendar firstDayOfYear = Calendar.getInstance();
-        firstDayOfYear.setTime(new Date(firstDay));
-        firstDayOfYear.add(Calendar.YEAR, 1);
-
-        return firstDayOfYear.getTime().getTime();
+        return calendarEnd.getTimeInMillis();
     }
 
     public static Long getLastMonth(Long ts) {
@@ -110,16 +103,6 @@ public class DateHelper {
         firstDayOfMonth.add(Calendar.MONTH, -1);
 
         return firstDayOfMonth.getTime().getTime();
-    }
-
-    public static Long getLastYear(Long ts) {
-        Long firstDay = getStartOfYear(ts);
-
-        Calendar firstDayOfYear = Calendar.getInstance();
-        firstDayOfYear.setTime(new Date(firstDay));
-        firstDayOfYear.add(Calendar.YEAR, -1);
-
-        return firstDayOfYear.getTime().getTime();
     }
 
     public static Long getNextWeek(Long ts) {
