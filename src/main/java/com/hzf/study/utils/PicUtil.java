@@ -3,8 +3,9 @@ package com.hzf.study.utils;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import java.io.*;
+import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * @author zhuofan.han
@@ -32,6 +33,7 @@ public class PicUtil {
      * @return Picture byte array after compression quality
      */
     public static byte[] compressPicForScale(byte[] imageBytes, long desFileSize) {
+        long start = System.currentTimeMillis();
         if (imageBytes == null || imageBytes.length <= ZERO || imageBytes.length < desFileSize * ONE_ZERO_TWO_FOUR) {
             return imageBytes;
         }
@@ -39,13 +41,21 @@ public class PicUtil {
         double accuracy = getAccuracy(srcSize / ONE_ZERO_TWO_FOUR);
         try {
             while (imageBytes.length > desFileSize * ONE_ZERO_TWO_FOUR) {
+                double scale = BigDecimalUtil.div(imageBytes.length, desFileSize * ONE_ZERO_TWO_FOUR);
+                scale = BigDecimalUtil.sqrt(new BigDecimal(scale), 2, BigDecimal.ROUND_HALF_DOWN).doubleValue();
+                if (scale > ZERO_EIGHT_FIVE) {
+                    scale = ZERO_EIGHT_FIVE;
+                }
+
+                log.info("{} {}",imageBytes.length, scale);
                 ByteArrayInputStream inputStream = new ByteArrayInputStream(imageBytes);
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream(imageBytes.length);
-                Thumbnails.of(inputStream).scale(accuracy).outputQuality(accuracy).toOutputStream(outputStream);
+                Thumbnails.of(inputStream).scale(scale).toOutputStream(outputStream);
+//                Thumbnails.of(inputStream).scale(accuracy).outputQuality(accuracy).toOutputStream(outputStream);
                 imageBytes = outputStream.toByteArray();
             }
-            log.info("Original image size={}kb | Compressed size={}kb", srcSize / ONE_ZERO_TWO_FOUR,
-                imageBytes.length / ONE_ZERO_TWO_FOUR);
+            log.info("Original image size={}kb | Compressed size={}kb | Cost={}ms", srcSize / ONE_ZERO_TWO_FOUR,
+                    imageBytes.length / ONE_ZERO_TWO_FOUR, System.currentTimeMillis() - start);
         } catch (Exception e) {
             log.error("[Image compression] msg=Image compression failed!", e);
         }
@@ -71,5 +81,39 @@ public class PicUtil {
             accuracy = ZERO_FOUR;
         }
         return accuracy;
+    }
+
+    public static byte[] readFileToByteArray(File f) {
+        try (InputStream is = new FileInputStream(f); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
+            byte[] b = new byte[1024];
+            int n;
+            while ((n = is.read(b)) != -1) {
+                out.write(b, 0, n);
+            }
+            return out.toByteArray();
+        } catch (Exception e) {
+            log.error("[Image readFileToByteArray]", e);
+        }
+        return new byte[0];
+    }
+
+    public static void getFileByBytes(byte[] bytes, String filePath, String fileName) {
+        File dir = new File(filePath);
+        if (!dir.exists() && dir.isDirectory()) {
+            dir.mkdirs();
+        }
+        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath + "\\" + fileName))) {
+            bos.write(bytes);
+        } catch (Exception e) {
+            log.error("[Image getFileByBytes]", e);
+        }
+    }
+
+    public static void main(String[] args) {
+        File file = new File("C:\\Users\\zhuofan.han\\Desktop\\app2.0\\image");
+        for (File f : Objects.requireNonNull(file.listFiles())) {
+            byte[] imageBytes = compressPicForScale(readFileToByteArray(f), 16);
+            getFileByBytes(imageBytes, "C:\\Users\\zhuofan.han\\Desktop\\app2.0\\", f.getName());
+        }
     }
 }
