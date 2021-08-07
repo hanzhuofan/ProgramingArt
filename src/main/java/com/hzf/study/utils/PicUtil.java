@@ -2,6 +2,7 @@ package com.hzf.study.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
+import org.apache.commons.io.FileUtils;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -47,15 +48,15 @@ public class PicUtil {
                     scale = ZERO_EIGHT_FIVE;
                 }
 
-                log.info("{} {}",imageBytes.length, scale);
+                log.info("{} {}", imageBytes.length, scale);
                 ByteArrayInputStream inputStream = new ByteArrayInputStream(imageBytes);
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream(imageBytes.length);
                 Thumbnails.of(inputStream).scale(scale).toOutputStream(outputStream);
-//                Thumbnails.of(inputStream).scale(accuracy).outputQuality(accuracy).toOutputStream(outputStream);
+                // Thumbnails.of(inputStream).scale(accuracy).outputQuality(accuracy).toOutputStream(outputStream);
                 imageBytes = outputStream.toByteArray();
             }
             log.info("Original image size={}kb | Compressed size={}kb | Cost={}ms", srcSize / ONE_ZERO_TWO_FOUR,
-                    imageBytes.length / ONE_ZERO_TWO_FOUR, System.currentTimeMillis() - start);
+                imageBytes.length / ONE_ZERO_TWO_FOUR, System.currentTimeMillis() - start);
         } catch (Exception e) {
             log.error("[Image compression] msg=Image compression failed!", e);
         }
@@ -110,10 +111,15 @@ public class PicUtil {
     }
 
     public static void main(String[] args) {
-        File file = new File("C:\\Users\\zhuofan.han\\Desktop\\app2.0\\image");
-        for (File f : Objects.requireNonNull(file.listFiles())) {
-            byte[] imageBytes = compressPicForScale(readFileToByteArray(f), 16);
-            getFileByBytes(imageBytes, "C:\\Users\\zhuofan.han\\Desktop\\app2.0\\", f.getName());
+        try {
+            File file = new File("C:\\Users\\zhuofan.han\\Desktop\\app2.0\\image");
+            for (File f : Objects.requireNonNull(file.listFiles())) {
+                byte[] imageBytes = compressPicForScale(FileUtils.readFileToByteArray(f), 16);
+                FileUtils.writeByteArrayToFile(new File("C:\\Users\\zhuofan.han\\Desktop\\app2.0\\" + f.getName()),
+                    imageBytes);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
