@@ -31,3 +31,4 @@ workspace
 .project
 .classpath
 /.settings/
+/.jpb/
