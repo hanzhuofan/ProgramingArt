@@ -1,5 +1,6 @@
 package com.hzf.study.utils;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,8 +12,13 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
+import java.util.Properties;
 
 /**
  * @author zhuofan.han
@@ -21,6 +27,23 @@ import java.io.File;
 @Slf4j
 @Component("mailSenderUtil")
 public class MailSenderUtil {
+    @SneakyThrows
+    public static void main(String[] args) {
+        Properties properties = new Properties();
+        properties.setProperty("mail.smtp.host", "172.21.128.131");
+        properties.setProperty("mail.smtp.port", "25");
+
+        Session session = Session.getDefaultInstance(properties);
+        session.setDebug(true);
+
+        MimeMessage msg = new MimeMessage(session);
+        msg.setFrom(new InternetAddress("inspection@storevue.com"));
+        msg.setRecipient(Message.RecipientType.TO, new InternetAddress("zhuofan.han@advantech.com.cn"));
+        msg.setSubject("测试免认证方式发送邮件！！！");
+        msg.setText("测试一下，邮件来自 http://www.donews.net/lizongbo ");
+
+        Transport.send(msg);
+    }
 
     @Autowired
     private JavaMailSender mailSender;
