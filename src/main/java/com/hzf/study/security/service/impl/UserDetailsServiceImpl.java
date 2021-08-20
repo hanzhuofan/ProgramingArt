@@ -1,16 +1,16 @@
-package com.hzf.study.security;
+package com.hzf.study.security.service.impl;
 
+import com.hzf.study.security.entity.JwtUserDetails;
 import com.hzf.study.security.entity.SysUser;
 import com.hzf.study.security.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
+import org.springframework.stereotype.Component;
 import java.util.Objects;
 
 /**
@@ -18,11 +18,11 @@ import java.util.Objects;
  *
  * @author zhuofan.han
  */
-public class UserDetailsRepository {
+@Component
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private SysUserService sysUserService;
-
 
     /**
      * Create user.
@@ -33,10 +33,9 @@ public class UserDetailsRepository {
         SysUser sysUser = new SysUser();
         sysUser.setUsername(user.getUsername());
         sysUser.setEncodePassword(user.getPassword());
-        sysUser.setAge(18);
-        //todo 自行排重
-        sysUserService.addUser(sysUser);
+        sysUser.setRoles(user.getAuthorities().toString());
 
+        sysUserService.addUser(sysUser);
     }
 
 
@@ -49,7 +48,7 @@ public class UserDetailsRepository {
         SysUser sysUser = new SysUser();
         sysUser.setUsername(user.getUsername());
         sysUser.setEncodePassword(user.getPassword());
-        sysUser.setAge(18);
+        sysUser.setRoles(user.getAuthorities().toString());
 
         sysUserService.updateUser(sysUser);
     }
@@ -66,7 +65,6 @@ public class UserDetailsRepository {
 
         sysUserService.removeUser(sysUser);
     }
-
 
     /**
      * Change password.
@@ -127,16 +125,13 @@ public class UserDetailsRepository {
      * @return the user details
      * @throws UsernameNotFoundException the username not found exception
      */
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SysUser sysUser = sysUserService.queryByUsername(username);
-
-        if (Objects.nonNull(sysUser)) {
-            return User.withUsername(username).password(sysUser.getEncodePassword())
-                    .authorities(AuthorityUtils.NO_AUTHORITIES)
-                    .build();
+        SysUser user = sysUserService.queryByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("username: " + username + " notfound");
         }
-        throw new UsernameNotFoundException("username: " + username + " notfound");
+        return JwtUserDetails.of(user);
     }
-
 
 }

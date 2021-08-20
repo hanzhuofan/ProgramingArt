@@ -16,7 +16,7 @@ public interface SysUserMapper {
      * @param username the username
      * @return the sys user
      */
-    SysUser queryByUsername(String username);
+    SysUser queryByUsername(@Param("username") String username);
 
     /**
      * Add user integer.
@@ -24,7 +24,7 @@ public interface SysUserMapper {
      * @param sysUser the sys user
      * @return the integer
      */
-    Integer addUser(@Param("sysUser") SysUser sysUser);
+    Integer addUser(SysUser sysUser);
 
     /**
      * Update user integer.
@@ -32,7 +32,7 @@ public interface SysUserMapper {
      * @param sysUser the sys user
      * @return the integer
      */
-    Integer updateUser(@Param("sysUser") SysUser sysUser);
+    Integer updateUser(SysUser sysUser);
 
 
     /**
@@ -41,6 +41,6 @@ public interface SysUserMapper {
      * @param sysUser the sys user
      * @return the integer
      */
-    Integer removeUser(@Param("sysUser") SysUser sysUser);
+    Integer removeUser(SysUser sysUser);
 
 }

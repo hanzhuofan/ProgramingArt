@@ -37,7 +37,7 @@ public class PdfFile {
         FileOutputStream output = null;
         try {
             // 读取模板文件,填充模板参数
-            Configuration freemarkerCfg = new Configuration(Configuration.VERSION_2_3_30);
+            Configuration freemarkerCfg = new Configuration(Configuration.VERSION_2_3_28);
             freemarkerCfg.setTemplateLoader(new ClassTemplateLoader(PdfFile.class, "/pdfTemplate/"));
             Template template = freemarkerCfg.getTemplate(templateFile);
             StringWriter out = new StringWriter();

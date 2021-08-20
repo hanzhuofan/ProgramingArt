@@ -2,10 +2,8 @@ package com.hzf.study.controller;
 
 import com.hzf.study.service.GreetingService;
 import org.apache.commons.io.FileUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -14,9 +12,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author zhuofan.han
+ * @date 2021/8/19 11:17
+ */
 @RestController
+@RequestMapping("/hello")
 public class GreetingController {
-
+    @Autowired
     private GreetingService greetingService;
 
     public void setGreetingService(GreetingService greetingService) {
@@ -55,8 +58,13 @@ public class GreetingController {
         return "success";
     }
 
-    @GetMapping("/greeting")
+    @GetMapping("")
     public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         return "hello " + name;
+    }
+
+    @GetMapping("/activiti")
+    public String activiti() {
+        return greetingService.activiti();
     }
 }
