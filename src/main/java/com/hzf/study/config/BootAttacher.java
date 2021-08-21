@@ -1,6 +1,6 @@
 package com.hzf.study.config;
 
-import com.alibaba.druid.pool.DruidDataSource;
+//import com.alibaba.druid.pool.DruidDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.flyway.FlywayDataSource;
@@ -33,24 +33,24 @@ public class BootAttacher {
 
     @Value("${spring.datasource.type}")
     private String dbType;
-
-    @Bean
-    @Primary
-    @FlywayDataSource
-    public DataSource getDataSource() {
-        DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setUrl(datasourceUrl);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-        dataSource.setDriverClassName(driverClassName);
-        dataSource.setDbType(dbType);
-
-        log.info("[Config:BootAttacher] DataSource: " +
-                datasourceUrl + "," +
-                username + "," +
-                password);
-
-        return dataSource;
-    }
+//
+//    @Bean
+//    @Primary
+//    @FlywayDataSource
+//    public DataSource getDataSource() {
+//        DruidDataSource dataSource = new DruidDataSource();
+//        dataSource.setUrl(datasourceUrl);
+//        dataSource.setUsername(username);
+//        dataSource.setPassword(password);
+//        dataSource.setDriverClassName(driverClassName);
+//        dataSource.setDbType(dbType);
+//
+//        log.info("[Config:BootAttacher] DataSource: " +
+//                datasourceUrl + "," +
+//                username + "," +
+//                password);
+//
+//        return dataSource;
+//    }
 
 }

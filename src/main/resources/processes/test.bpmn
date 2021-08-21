@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1asqw0t" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.9.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="Process_0jl76hi" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1hmcqmi</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_0wojo5n" name="创建申请">
+      <bpmn:incoming>Flow_1hmcqmi</bpmn:incoming>
+      <bpmn:outgoing>Flow_0tc7sao</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1hmcqmi" sourceRef="StartEvent_1" targetRef="Activity_0wojo5n" />
+    <bpmn:task id="Activity_14kn1u0" name="部门经理审批">
+      <bpmn:incoming>Flow_0tc7sao</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jk4264</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0tc7sao" sourceRef="Activity_0wojo5n" targetRef="Activity_14kn1u0" />
+    <bpmn:sequenceFlow id="Flow_1jk4264" sourceRef="Activity_14kn1u0" targetRef="Activity_0bk1nwz" />
+    <bpmn:task id="Activity_0bk1nwz" name="HR审批">
+      <bpmn:incoming>Flow_1jk4264</bpmn:incoming>
+      <bpmn:outgoing>Flow_0um83jl</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0um83jl" sourceRef="Activity_0bk1nwz" targetRef="Event_0llfmb0" />
+    <bpmn:endEvent id="Event_0llfmb0">
+      <bpmn:incoming>Flow_0um83jl</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0jl76hi">
+      <bpmndi:BPMNEdge id="Flow_0um83jl_di" bpmnElement="Flow_0um83jl">
+        <di:waypoint x="680" y="117" />
+        <di:waypoint x="762" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jk4264_di" bpmnElement="Flow_1jk4264">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="580" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tc7sao_di" bpmnElement="Flow_0tc7sao">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hmcqmi_di" bpmnElement="Flow_1hmcqmi">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wojo5n_di" bpmnElement="Activity_0wojo5n">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14kn1u0_di" bpmnElement="Activity_14kn1u0">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0bk1nwz_di" bpmnElement="Activity_0bk1nwz">
+        <dc:Bounds x="580" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0llfmb0_di" bpmnElement="Event_0llfmb0">
+        <dc:Bounds x="762" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
