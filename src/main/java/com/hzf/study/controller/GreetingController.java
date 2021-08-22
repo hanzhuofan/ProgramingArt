@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2021/8/19 11:17
  */
 @RestController
-@RequestMapping("/hello")
+@RequestMapping("/")
 public class GreetingController {
     @Autowired
     private GreetingService greetingService;

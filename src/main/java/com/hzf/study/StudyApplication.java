@@ -3,13 +3,16 @@ package com.hzf.study;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @author zhuofan.han
  */
 @MapperScan({"com.hzf.study.security.mapper*"})
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+        FlywayAutoConfiguration.class
+})
 @EnableScheduling
 public class StudyApplication {
 
