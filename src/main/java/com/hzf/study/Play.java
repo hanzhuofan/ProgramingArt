@@ -1,7 +1,7 @@
 package com.hzf.study;
 
 import com.hzf.study.controller.GreetingController;
-import com.hzf.study.service.GreetingService;
+import com.hzf.study.service.ActivitiService;
 import com.hzf.study.utils.DateHelper;
 import com.hzf.study.utils.RuntimeUtils;
 import com.sun.management.OperatingSystemMXBean;
@@ -9,10 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
-import oshi.hardware.GlobalMemory;
-import oshi.util.Util;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
@@ -36,12 +32,11 @@ public class Play {
         GreetingController greetingController = new GreetingController();
         Class<? extends GreetingController> aClass = greetingController.getClass();
 
-        GreetingService greetingService = new GreetingService();
-        System.out.println(greetingService);
+        ActivitiService activitiService = new ActivitiService();
+        System.out.println(activitiService);
 
-        Method setGreetingService = aClass.getDeclaredMethod("setGreetingService", GreetingService.class);
-        setGreetingService.invoke(greetingController, greetingService);
-        System.out.println(greetingController.getGreetingService());
+        Method setGreetingService = aClass.getDeclaredMethod("setGreetingService", ActivitiService.class);
+        setGreetingService.invoke(greetingController, activitiService);
 
         Double d = 10.0;
         System.out.println(Math.floor(d) == d);

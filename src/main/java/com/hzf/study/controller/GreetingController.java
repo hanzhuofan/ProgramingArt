@@ -1,6 +1,6 @@
 package com.hzf.study.controller;
 
-import com.hzf.study.service.GreetingService;
+import com.hzf.study.service.ActivitiService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,15 +20,7 @@ import java.util.List;
 @RequestMapping("/")
 public class GreetingController {
     @Autowired
-    private GreetingService greetingService;
-
-    public void setGreetingService(GreetingService greetingService) {
-        this.greetingService = greetingService;
-    }
-
-    public GreetingService getGreetingService() {
-        return greetingService;
-    }
+    private ActivitiService activitiService;
 
     @PostMapping("/suo/upload")
     public String upload(MultipartFile file) {
@@ -63,8 +55,18 @@ public class GreetingController {
         return "hello " + name;
     }
 
-    @GetMapping("/activiti")
-    public String activiti() {
-        return greetingService.activiti();
+    @RequestMapping("/submit")
+    public String submitApply(){
+        return activitiService.submitApply();
+    }
+
+    @RequestMapping("/create")
+    public String createApply(String assignee){
+        return activitiService.createApply(assignee);
+    }
+
+    @RequestMapping("/secondAudit")
+    public String secondAudit(String assignee){
+        return activitiService.secondAudit(assignee);
     }
 }

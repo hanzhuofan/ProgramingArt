@@ -51,7 +51,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext().setAuthentication(jwtLoginToken);
             filterChain.doFilter(httpServletRequest, httpServletResponse);
         } catch (Exception e) {
-            throw new BadCredentialsException("登陆凭证失效，请重新登陆");
+            throw new BadCredentialsException("登陆凭证失效，请重新登陆", e);
         }
 
     }

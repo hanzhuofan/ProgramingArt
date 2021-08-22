@@ -13,4 +13,4 @@ CREATE TABLE IF NOT EXISTS spring_security.sys_user
     );
 
 insert into spring_security.sys_user
-values (1, 'admin', 'abc123', 'admin');
+values (1, 'admin', '$2a$10$LPiHGgqwJJwHjDlpVzqBL.VCUge.Rin0AFKL0xn2sUY/e17zwiLPG', 'admin');
