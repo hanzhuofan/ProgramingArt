@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="myTest" isClosed="false" isExecutable="true" processType="None">
     <startEvent id="Event_1fb6jx2" name="StartEvent"/>
-    <userTask camunda:assignee="zhangsan" camunda:exclusive="true"  id="Activity_0vizqus"  name="创建出差申请单"/>
-    <userTask camunda:exclusive="true"  id="Activity_0dm0jl0" camunda:assignee="jack" name="总经理审批"/>
+    <userTask activiti:assignee="zhangsan" activiti:exclusive="true"  id="Activity_0vizqus"  name="创建出差申请单"/>
+    <userTask activiti:exclusive="true"  id="Activity_0dm0jl0" activiti:assignee="jack" name="总经理审批"/>
     <endEvent id="Event_1ug08ii" name="EndEvent"/>
     <sequenceFlow id="Flow_13wzyw1" sourceRef="Event_1fb6jx2" targetRef="Activity_0vizqus"/>
     <sequenceFlow id="Flow_09pjrbx" sourceRef="Activity_0vizqus" targetRef="Activity_1aomhta"/>
     <sequenceFlow id="Flow_164iiwb" sourceRef="Activity_0dm0jl0" targetRef="Event_1ug08ii"/>
-    <serviceTask id="Activity_1aomhta" name="部门经理审批" camunda:expression="${activitiService.finalAudit(execution)}"/>
+    <serviceTask id="Activity_1aomhta" name="部门经理审批" activiti:expression="${activitiService.finalAudit(execution)}"/>
     <sequenceFlow id="Flow_1p1kzwk" sourceRef="Activity_1aomhta" targetRef="Activity_0dm0jl0"/>
   </process>
   <bpmndi:BPMNDiagram documentation="background=#3C3F41;count=1;horizontalcount=1;orientation=0;width=842.4;height=1195.2;imageableWidth=832.4;imageableHeight=1185.2;imageableX=5.0;imageableY=5.0" id="Diagram-_1" name="New Diagram">

@@ -15,6 +15,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Result<T> implements Serializable {
 
+    private static final long serialVersionUID = 3177602819135682156L;
+    
     private T data;
 
     private Integer errCode;

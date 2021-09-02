@@ -1,8 +1,6 @@
 package com.hzf.study.controller;
 
-import com.hzf.study.service.ActivitiService;
 import org.apache.commons.io.FileUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -19,8 +17,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/")
 public class GreetingController {
-    @Autowired
-    private ActivitiService activitiService;
+    @GetMapping("")
+    public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return "hello " + name;
+    }
 
     @PostMapping("/suo/upload")
     public String upload(MultipartFile file) {
@@ -48,25 +48,5 @@ public class GreetingController {
             }
         }
         return "success";
-    }
-
-    @GetMapping("")
-    public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return "hello " + name;
-    }
-
-    @RequestMapping("/submit")
-    public String submitApply(){
-        return activitiService.submitApply();
-    }
-
-    @RequestMapping("/create")
-    public String createApply(String assignee){
-        return activitiService.createApply(assignee);
-    }
-
-    @RequestMapping("/secondAudit")
-    public String secondAudit(String assignee){
-        return activitiService.secondAudit(assignee);
     }
 }
