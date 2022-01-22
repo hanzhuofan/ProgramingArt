@@ -1,5 +1,7 @@
 package com.hzf.study.controller;
 
+import com.hzf.study.service.ActivitiService;
+import lombok.Data;
 import org.apache.commons.io.FileUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,7 +18,10 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/")
+@Data
 public class GreetingController {
+    ActivitiService greetingService;
+
     @GetMapping("")
     public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
         return "hello " + name;

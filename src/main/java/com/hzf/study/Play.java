@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
 import java.lang.reflect.Method;
 import java.text.DateFormat;
@@ -19,6 +20,11 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.LockSupport;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -138,6 +144,77 @@ public class Play {
 //            System.out.println("cpu当前使用率3==:" + new DecimalFormat("#.##%").format(Play.getInstance().getProcessCpu()));
 //            Thread.sleep(0);
 //        }
+
+        // 获取 Java 线程管理 MXBean
+        ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
+        // 不需要获取同步的 monitor 和 synchronizer 信息，仅获取线程和线程堆栈信息
+        ThreadInfo[] threadInfos = threadMXBean.dumpAllThreads(false, false);
+        // 遍历线程信息，仅打印线程 ID 和线程名称信息
+        for (ThreadInfo threadInfo : threadInfos) {
+            System.out.println("[" + threadInfo.getThreadId() + "] " + threadInfo.getThreadName());
+        }
+
+        for (int i = 0; i < 5; i++) {
+//            new Thread(Play::await123, "Thread-" + i).start();
+        }
+//        new Thread(Play::await123, "Thread-1").start();
+//        new Thread(Play::signal, "Thread-2").start();
+//        new Thread(Play::signalAll, "Thread-signalAll").start();
+
+        CountDownLatch readyLatch = new CountDownLatch(5);
+        CountDownLatch runningLatchWait = new CountDownLatch(1);
+        CountDownLatch completeLatch = new CountDownLatch(5);
+        for (int i = 0; i < 5; i++) {
+            new Thread(new CountDownDemo(readyLatch,runningLatchWait,completeLatch), "Thread-" + i).start();
+        }
+        readyLatch.await();//等待发令
+        System.out.println("发令");
+        runningLatchWait.countDown();//发令
+        completeLatch.await();//等所有子线程执行完
+        System.out.println("主线程执行完毕");
+    }
+
+    private static final Lock lock = new ReentrantLock(true);
+
+    private static final Condition condition = lock.newCondition();
+
+    public static void await123() {
+        System.out.println(Thread.currentThread().getName() + "开始wait");
+        try {
+            lock.lock();
+//            condition.await();
+            Thread.sleep(10);
+            System.out.println("ThreadName=" + Thread.currentThread().getName() + " ok");
+//            for (int i = 0; i < 5; i++) {
+//                System.out.println("ThreadName=" + Thread.currentThread().getName() + (" " + (i + 1)));
+//            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public static void signal() {
+        System.out.println(Thread.currentThread().getName() + "开始wait");
+        try {
+            lock.lock();
+            System.out.println("ThreadName=" + Thread.currentThread().getName() + "-signal");
+            condition.signal();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public static void signalAll() {
+        System.out.println(Thread.currentThread().getName() + "开始wait");
+        try {
+            lock.lock();
+            System.out.println("ThreadName=" + Thread.currentThread().getName() + "-signalAll");
+            condition.signalAll();
+        } finally {
+            lock.unlock();
+        }
     }
 
     private static OperatingSystemMXBean osmxb = (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
@@ -210,6 +287,33 @@ public class Play {
         @Override
         public int hashCode() {
             return Objects.hash(a);
+        }
+    }
+
+
+    public static class CountDownDemo implements Runnable{
+        private CountDownLatch readyLatch;
+        private CountDownLatch runningLatchWait;
+        private CountDownLatch completeLatch;
+
+        public CountDownDemo(CountDownLatch readyLatch, CountDownLatch runningLatchWait, CountDownLatch completeLatch) {
+            this.readyLatch = readyLatch;
+            this.runningLatchWait = runningLatchWait;
+            this.completeLatch = completeLatch;
+        }
+
+        @Override
+        public void run() {
+            readyLatch.countDown();
+            try {
+                System.out.println("线程" + Thread.currentThread().getName() + " readyLatch");
+                runningLatchWait.await();
+                System.out.println("线程" + Thread.currentThread().getName() + "开始执行");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                completeLatch.countDown();
+            }
         }
     }
 }

@@ -5,13 +5,17 @@ import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.annotation.write.style.ContentFontStyle;
 import com.alibaba.excel.annotation.write.style.ContentStyle;
 import com.alibaba.excel.context.AnalysisContext;
+import com.alibaba.excel.enums.BooleanEnum;
+import com.alibaba.excel.enums.poi.BorderStyleEnum;
+import com.alibaba.excel.enums.poi.HorizontalAlignmentEnum;
+import com.alibaba.excel.enums.poi.VerticalAlignmentEnum;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.alibaba.excel.metadata.CellData;
 import com.alibaba.excel.metadata.Head;
+import com.alibaba.excel.metadata.data.WriteCellData;
 import com.alibaba.excel.read.metadata.ReadSheet;
 import com.alibaba.excel.write.builder.ExcelWriterBuilder;
-import com.alibaba.excel.write.handler.AbstractCellWriteHandler;
-import com.alibaba.excel.write.handler.AbstractRowWriteHandler;
+import com.alibaba.excel.write.handler.CellWriteHandler;
+import com.alibaba.excel.write.handler.RowWriteHandler;
 import com.alibaba.excel.write.merge.OnceAbsoluteMergeStrategy;
 import com.alibaba.excel.write.metadata.holder.WriteSheetHolder;
 import com.alibaba.excel.write.metadata.holder.WriteTableHolder;
@@ -151,7 +155,7 @@ public class ExcelUtil {
     /**
      * 自定义单元格样式处理器（支持字体样式、背景颜色、边框样式、对齐方式、自动换行）
      */
-    public static class CustomCellStyleHandler extends AbstractRowWriteHandler {
+    public static class CustomCellStyleHandler implements RowWriteHandler {
         /**
          * sheet名称KEY
          */
@@ -304,16 +308,16 @@ public class ExcelUtil {
                             //字体样式
                             // 判断上边框线条类型KEY是否存在
                             && x.keySet().contains(KEY_BORDER_TOP) == true
-                            && (x.get(KEY_BORDER_TOP) == null || x.get(KEY_BORDER_TOP) instanceof BorderStyle)
+                            && (x.get(KEY_BORDER_TOP) == null || x.get(KEY_BORDER_TOP) instanceof BorderStyleEnum)
                             // 判断右边框线条类型KEY是否存在
                             && x.keySet().contains(KEY_BORDER_RIGHT) == true
-                            && (x.get(KEY_BORDER_RIGHT) == null || x.get(KEY_BORDER_RIGHT) instanceof BorderStyle)
+                            && (x.get(KEY_BORDER_RIGHT) == null || x.get(KEY_BORDER_RIGHT) instanceof BorderStyleEnum)
                             // 判断下边框线条类型KEY是否存在
                             && x.keySet().contains(KEY_BORDER_BOTTOM) == true
-                            && (x.get(KEY_BORDER_BOTTOM) == null || x.get(KEY_BORDER_BOTTOM) instanceof BorderStyle)
+                            && (x.get(KEY_BORDER_BOTTOM) == null || x.get(KEY_BORDER_BOTTOM) instanceof BorderStyleEnum)
                             // 判断左边框线条类型KEY是否存在
                             && x.keySet().contains(KEY_BORDER_LEFT) == true
-                            && (x.get(KEY_BORDER_LEFT) == null || x.get(KEY_BORDER_LEFT) instanceof BorderStyle)
+                            && (x.get(KEY_BORDER_LEFT) == null || x.get(KEY_BORDER_LEFT) instanceof BorderStyleEnum)
                             // 判断上边框线条颜色KEY是否存在
                             && x.keySet().contains(KEY_LEFT_BORDER_COLOR) == true
                             && (x.get(KEY_LEFT_BORDER_COLOR) instanceof IndexedColors || x.get(KEY_LEFT_BORDER_COLOR) instanceof XSSFColor
@@ -624,7 +628,7 @@ public class ExcelUtil {
          * @return
          */
         public static Map<String, Object> createTopBorderLineTypeCellStyleMap(String sheetName, int rowIndex, int columnIndex
-                , BorderStyle borderTop) {
+                , BorderStyleEnum borderTop) {
             return createBorderLineTypeCellStyleMap(sheetName, rowIndex, columnIndex, borderTop, null, null, null);
         }
 
@@ -638,7 +642,7 @@ public class ExcelUtil {
          * @return
          */
         public static Map<String, Object> createRightBorderLineTypeCellStyleMap(String sheetName, int rowIndex, int columnIndex
-                , BorderStyle borderRight) {
+                , BorderStyleEnum borderRight) {
             return createBorderLineTypeCellStyleMap(sheetName, rowIndex, columnIndex, null, borderRight, null, null);
         }
 
@@ -652,7 +656,7 @@ public class ExcelUtil {
          * @return
          */
         public static Map<String, Object> createBottomBorderLineTypeCellStyleMap(String sheetName, int rowIndex, int columnIndex
-                , BorderStyle borderBottom) {
+                , BorderStyleEnum borderBottom) {
             return createBorderLineTypeCellStyleMap(sheetName, rowIndex, columnIndex, null, null, borderBottom, null);
         }
 
@@ -666,7 +670,7 @@ public class ExcelUtil {
          * @return
          */
         public static Map<String, Object> createLeftBorderLineTypeCellStyleMap(String sheetName, int rowIndex, int columnIndex
-                , BorderStyle borderLeft) {
+                , BorderStyleEnum borderLeft) {
             return createBorderLineTypeCellStyleMap(sheetName, rowIndex, columnIndex, null, null, null, borderLeft);
         }
 
@@ -712,7 +716,7 @@ public class ExcelUtil {
          * @return
          */
         public static Map<String, Object> createBorderLineTypeCellStyleMap(String sheetName, int rowIndex, int columnIndex
-                , BorderStyle borderLineType) {
+                , BorderStyleEnum borderLineType) {
             return createBorderCellStyleMap(sheetName, rowIndex, columnIndex, borderLineType, null);
         }
 
@@ -729,7 +733,7 @@ public class ExcelUtil {
          * @return
          */
         public static Map<String, Object> createBorderLineTypeCellStyleMap(String sheetName, int rowIndex, int columnIndex
-                , BorderStyle borderTop, BorderStyle borderRight, BorderStyle borderBottom, BorderStyle borderLeft) {
+                , BorderStyleEnum borderTop, BorderStyleEnum borderRight, BorderStyleEnum borderBottom, BorderStyleEnum borderLeft) {
             return createBorderCellStyleMap(sheetName, rowIndex, columnIndex, borderTop, borderRight, borderBottom, borderLeft
                     , null, null, null, null);
         }
@@ -745,7 +749,7 @@ public class ExcelUtil {
          * @return
          */
         public static Map<String, Object> createBorderCellStyleMap(String sheetName, int rowIndex, int columnIndex
-                , BorderStyle borderLineType, Object borderColor) {
+                , BorderStyleEnum borderLineType, Object borderColor) {
             return createBorderCellStyleMap(sheetName, rowIndex, columnIndex, borderLineType, borderLineType, borderLineType, borderLineType
                     , borderColor, borderColor, borderColor, borderColor);
         }
@@ -767,7 +771,7 @@ public class ExcelUtil {
          * @return
          */
         public static Map<String, Object> createBorderCellStyleMap(String sheetName, int rowIndex, int columnIndex
-                , BorderStyle borderTop, BorderStyle borderRight, BorderStyle borderBottom, BorderStyle borderLeft, Object topBorderColor
+                , BorderStyleEnum borderTop, BorderStyleEnum borderRight, BorderStyleEnum borderBottom, BorderStyleEnum borderLeft, Object topBorderColor
                 , Object rightBorderColor, Object bottomBorderColor, Object leftBorderColor) {
             return createCellStyleMap(sheetName, rowIndex, columnIndex, null, null, null, null, null, null, null, null
                     , null, borderTop, borderRight, borderBottom, borderLeft, topBorderColor, rightBorderColor
@@ -801,8 +805,8 @@ public class ExcelUtil {
          */
         public static Map<String, Object> createCellStyleMap(String sheetName, int rowIndex, int columnIndex
                 , String fontName, Double fontHeight, Object fontColor, Boolean fontBold, Boolean fontItalic, Byte fontUnderLine
-                , Short fontTypeOffset, Boolean fontStrikeout, Object backgroundColor, BorderStyle borderTop, BorderStyle borderRight
-                , BorderStyle borderBottom, BorderStyle borderLeft, Object topBorderColor, Object rightBorderColor, Object bottomBorderColor
+                , Short fontTypeOffset, Boolean fontStrikeout, Object backgroundColor, BorderStyleEnum borderTop, BorderStyleEnum borderRight
+                , BorderStyleEnum borderBottom, BorderStyleEnum borderLeft, Object topBorderColor, Object rightBorderColor, Object bottomBorderColor
                 , Object leftBorderColor) {
             return createCellStyleMap(sheetName, rowIndex, columnIndex, fontName, fontHeight, fontColor, fontBold, fontItalic
                     , fontUnderLine, fontTypeOffset, fontStrikeout, backgroundColor, borderTop, borderRight, borderBottom
@@ -884,8 +888,8 @@ public class ExcelUtil {
          */
         public static Map<String, Object> createCellStyleMap(String sheetName, int rowIndex, int columnIndex
                 , String fontName, Double fontHeight, Object fontColor, Boolean fontBold, Boolean fontItalic, Byte fontUnderLine
-                , Short fontTypeOffset, Boolean fontStrikeout, Object backgroundColor, BorderStyle borderTop, BorderStyle borderRight
-                , BorderStyle borderBottom, BorderStyle borderLeft, Object topBorderColor, Object rightBorderColor, Object bottomBorderColor
+                , Short fontTypeOffset, Boolean fontStrikeout, Object backgroundColor, BorderStyleEnum borderTop, BorderStyleEnum borderRight
+                , BorderStyleEnum borderBottom, BorderStyleEnum borderLeft, Object topBorderColor, Object rightBorderColor, Object bottomBorderColor
                 , Object leftBorderColor, HorizontalAlignment horizontalAlignment, VerticalAlignment verticalAlignment) {
             return createCellStyleMap(sheetName, rowIndex, columnIndex, fontName, fontHeight, fontColor, fontBold, fontItalic
                     , fontUnderLine, fontTypeOffset, fontStrikeout, backgroundColor, borderTop, borderRight, borderBottom
@@ -939,8 +943,8 @@ public class ExcelUtil {
          */
         public static Map<String, Object> createCellStyleMap(String sheetName, int rowIndex, int columnIndex
                 , String fontName, Double fontHeight, Object fontColor, Boolean fontBold, Boolean fontItalic, Byte fontUnderLine
-                , Short fontTypeOffset, Boolean fontStrikeout, Object backgroundColor, BorderStyle borderTop, BorderStyle borderRight
-                , BorderStyle borderBottom, BorderStyle borderLeft, Object topBorderColor, Object rightBorderColor, Object bottomBorderColor
+                , Short fontTypeOffset, Boolean fontStrikeout, Object backgroundColor, BorderStyleEnum borderTop, BorderStyleEnum borderRight
+                , BorderStyleEnum borderBottom, BorderStyleEnum borderLeft, Object topBorderColor, Object rightBorderColor, Object bottomBorderColor
                 , Object leftBorderColor, HorizontalAlignment horizontalAlignment, VerticalAlignment verticalAlignment, Boolean wrapText) {
             Map<String, Object> map = new HashMap<>();
             //sheet页名称
@@ -1287,10 +1291,10 @@ public class ExcelUtil {
     }
 
     @Data
-    public static class CustomCellWriteHandler extends AbstractCellWriteHandler {
+    public static class CustomCellWriteHandler implements CellWriteHandler {
 
         @Override
-        public void afterCellDispose(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder, List<CellData> cellDataList, Cell cell, Head head, Integer relativeRowIndex, Boolean isHead) {
+        public void afterCellDispose(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder, List<WriteCellData<?>> cellDataList, Cell cell, Head head, Integer relativeRowIndex, Boolean isHead) {
             if (cell.getColumnIndex() == 12 || cell.getColumnIndex() == 13 || cell.getColumnIndex() == 14 || cell.getColumnIndex() == 15 || cell.getColumnIndex() == 16) {
                 CreationHelper helper = writeSheetHolder.getSheet().getWorkbook().getCreationHelper();
                 Hyperlink hyperlink = helper.createHyperlink(HyperlinkType.URL);
@@ -1342,55 +1346,55 @@ public class ExcelUtil {
         //        @ContentLoopMerge(eachRow = 2)
 //        @ExcelProperty("字符串标题")
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.LEFT, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.LEFT, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String name;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.LEFT, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.LEFT, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String number;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.LEFT, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.LEFT, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String department;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.LEFT, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.LEFT, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String position;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.LEFT, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.LEFT, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String date;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.LEFT, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.LEFT, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String time;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.LEFT, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.LEFT, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String longitude;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.LEFT, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.LEFT, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String latitude;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.LEFT, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.LEFT, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String place;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.LEFT, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.LEFT, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String address;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.LEFT, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.LEFT, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String visitor;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.LEFT, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.LEFT, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String description;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9, color = 12, underline = Font.U_SINGLE)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.CENTER, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.CENTER, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String url1;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9, color = 12, underline = Font.U_SINGLE)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.CENTER, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.CENTER, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String url2;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9, color = 12, underline = Font.U_SINGLE)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.CENTER, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.CENTER, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String url3;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9, color = 12, underline = Font.U_SINGLE)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.CENTER, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.CENTER, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String url4;
         @ContentFontStyle(fontName = "宋体", fontHeightInPoints = 9, color = 12, underline = Font.U_SINGLE)
-        @ContentStyle(horizontalAlignment = HorizontalAlignment.CENTER, verticalAlignment = VerticalAlignment.CENTER, wrapped = true, borderLeft = BorderStyle.THIN, borderBottom = BorderStyle.THIN, borderRight = BorderStyle.THIN, borderTop = BorderStyle.THIN)
+        @ContentStyle(horizontalAlignment = HorizontalAlignmentEnum.CENTER, verticalAlignment = VerticalAlignmentEnum.CENTER, wrapped = BooleanEnum.TRUE, borderLeft = BorderStyleEnum.THIN, borderBottom = BorderStyleEnum.THIN, borderRight = BorderStyleEnum.THIN, borderTop = BorderStyleEnum.THIN)
         private String url5;
     }
 }
