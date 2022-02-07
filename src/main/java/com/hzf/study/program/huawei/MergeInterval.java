@@ -29,8 +29,6 @@ public class MergeInterval {
     }
 
     public ArrayList<Interval> merge(ArrayList<Interval> intervals) {
-        merge(intervals, 0, intervals.size() - 1);
-
         intervals.sort(Comparator.comparingInt(a -> a.start));
         int end = 0;
         ArrayList<Interval> ans = new ArrayList<>();
@@ -44,11 +42,6 @@ public class MergeInterval {
             }
         }
         return ans;
-    }
-
-    private void merge(ArrayList<Interval> intervals, int i, int j) {
-        merge(intervals, i, (i + j) / 2);
-        merge(intervals, (i + j) / 2, j);
     }
 
     static class Interval {
