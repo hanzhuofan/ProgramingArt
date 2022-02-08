@@ -39,13 +39,10 @@ public class DaoNum {
         if (i < 0 || j < 0 || i > grid.length - 1 || j > grid[i].length - 1) return;
         if (grid[i][j] == '1') {
             grid[i][j] = '0';
-        } else {
-            return;
+            clear(grid, i - 1, j);
+            clear(grid, i + 1, j);
+            clear(grid, i, j - 1);
+            clear(grid, i, j + 1);
         }
-
-        clear(grid, i - 1, j);
-        clear(grid, i + 1, j);
-        clear(grid, i, j - 1);
-        clear(grid, i, j + 1);
     }
 }

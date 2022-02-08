@@ -1,6 +1,10 @@
 package com.hzf.study.program.huawei;
 
 public class MaxWater {
+    public static void main(String[] args) {
+        MaxWater water = new MaxWater();
+        System.out.println(water.maxWater(new int[]{3, 1, 2, 5, 2, 4}));
+    }
 
     /**
      * max water
@@ -10,19 +14,26 @@ public class MaxWater {
      */
     public long maxWater(int[] arr) {
         // write code here
-        int len = arr.length;
-        if (len < 3) return 0;
+        if (arr.length < 3) {
+            return 0;
+        }
         long res = 0;
-        int left = 0, right = len - 1;
-        int lm = arr[0], rm = arr[right];
+        int left = 0, right = arr.length - 1;
+        int lm = arr[left], rm = arr[right];
         while (left < right) {
             if (arr[left] <= arr[right]) {
-                if (arr[left] >= lm) lm = arr[left];
-                else res += lm - arr[left];
+                if (arr[left] >= lm) {
+                    lm = arr[left];
+                } else {
+                    res += lm - arr[left];
+                }
                 left++;
             } else {
-                if (arr[right] >= rm) rm = arr[right];
-                else res += rm - arr[right];
+                if (arr[right] >= rm) {
+                    rm = arr[right];
+                } else {
+                    res += rm - arr[right];
+                }
                 right--;
             }
         }

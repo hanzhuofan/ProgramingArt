@@ -17,7 +17,7 @@ public class RotateMatrix {
     public int[][] rotateMatrix2(int[][] mat, int n) {
         // write code here
         for (int i = 0; i < n / 2; i++) {
-            for (int j = i; j < n - 1 - i; j++) {
+            for (int j = 0; j < n / 2; j++) {
                 int tmp = mat[i][j];
                 mat[i][j] = mat[n - 1 - j][i];
                 mat[n - 1 - j][i] = mat[n - 1 - i][n - 1 - j];
