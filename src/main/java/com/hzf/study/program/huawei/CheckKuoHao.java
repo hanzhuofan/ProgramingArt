@@ -1,5 +1,7 @@
 package com.hzf.study.program.huawei;
 
+import java.util.Stack;
+
 /**
  * @author zhuofan.han
  * @date 2022/1/28
@@ -37,5 +39,21 @@ public class CheckKuoHao {
             index++;
         }
         return si == 0;
+    }
+
+    public boolean isValid2(String s) {
+        // write code here
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c == '(')
+                stack.push(')');
+            else if (c == '[')
+                stack.push(']');
+            else if (c == '{')
+                stack.push('}');
+            else if (stack.empty() || stack.pop() != c)
+                return false;
+        }
+        return stack.empty();
     }
 }

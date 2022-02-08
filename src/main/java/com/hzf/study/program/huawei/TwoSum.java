@@ -17,6 +17,9 @@ public class TwoSum {
         // write code here
         int[] ans = new int[2];
         for (int i = 0; i < numbers.length; i++) {
+            if(numbers[i] > target){
+                continue;
+            }
             int val = target - numbers[i];
             for (int j = i + 1; j < numbers.length; j++) {
                 if (numbers[j] == val) {

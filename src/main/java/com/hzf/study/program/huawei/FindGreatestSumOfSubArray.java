@@ -4,9 +4,9 @@ package com.hzf.study.program.huawei;
  * @author zhuofan.han
  * @date 2022/1/28
  */
-public class FindMaxSumOfSubArray {
+public class FindGreatestSumOfSubArray {
     public static void main(String[] args) {
-        FindMaxSumOfSubArray sum = new FindMaxSumOfSubArray();
+        FindGreatestSumOfSubArray sum = new FindGreatestSumOfSubArray();
         System.out.println(sum.FindGreatestSumOfSubArray(new int[] {1,-2,3,10,-4,7,2,-5}));
         System.out.println(sum.FindGreatestSumOfSubArray(new int[] {2}));
         System.out.println(sum.FindGreatestSumOfSubArray(new int[] {-10}));
