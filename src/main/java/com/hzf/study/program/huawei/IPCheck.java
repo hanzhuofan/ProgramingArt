@@ -53,6 +53,15 @@ import java.util.*;
  */
 public class IPCheck {
     public static void main(String[] args) {
+        IPCheck ipCheck = new IPCheck();
+        System.out.println(ipCheck.solve("172.16.254.1"));
+        System.out.println(ipCheck.solve("172.16.254.01"));
+        System.out.println(ipCheck.solve("256.256.256.256"));
+        System.out.println(ipCheck.solve("2001:db8:85a3:0:0:8A2E:0370:7334"));
+        System.out.println(ipCheck.solve("2001:0db8:85a3:0000:0000:8a2e:0370:7334"));
+        System.out.println(ipCheck.solve("2001:0db8:85a3::8A2E:0370:7334"));
+        System.out.println(ipCheck.solve("02001:0db8:85a3:0000:0000:8a2e:0370:7334"));
+
         Scanner in = new Scanner(System.in);
         // 注意 hasNext 和 hasNextLine 的区别
         int[] r = new int[]{0, 0, 0, 0, 0, 0, 0};
@@ -100,6 +109,42 @@ public class IPCheck {
                 System.out.print(" ");
             }
         }
+    }
+
+    /**
+     * 验证IP地址
+     * @param IP string字符串 一个IP地址字符串
+     * @return string字符串
+     */
+    public String solve (String IP) {
+        // write code here
+        if (IP.contains(".") && checkIpv4(IP)) {
+            return "IPv4";
+        } else if (IP.contains(":") && checkIpv6(IP)) {
+            return "IPv6";
+        } else {
+            return "Neither";
+        }
+    }
+
+    private boolean checkIpv6(String ip) {
+        String[] split = ip.split(":");
+        if (split.length != 8) return false;
+        for (int i = 0; i < split.length; i++) {
+            String num = split[i];
+            if (!num.matches("[0-9a-fA-F]{1,4}")) return false;
+        }
+        return true;
+    }
+
+    private boolean checkIpv4(String ip) {
+        String[] split = ip.split("\\.");
+        if (split.length != 4) return false;
+        for (int i = 0; i < split.length; i++) {
+            String num = split[i];
+            if (!num.matches("[0-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5]")) return false;
+        }
+        return true;
     }
 
     public static boolean check(String[] ip, String[] ma) {
