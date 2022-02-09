@@ -1,11 +1,15 @@
 package com.hzf.study.program.nowcoder;
 
+import java.util.Stack;
+
 /**
  * @author zhuofan.han
  * @date 2022/1/28
  */
 public class MergeList {
     public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+
         MergeList test = new MergeList();
         ListNode list1 = new ListNode(1);
         ListNode list3 = new ListNode(3);
