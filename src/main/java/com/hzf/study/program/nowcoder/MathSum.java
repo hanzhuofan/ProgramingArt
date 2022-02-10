@@ -116,4 +116,69 @@ public class MathSum {
     boolean isNumber(char c) {
         return Character.isDigit(c);
     }
+
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     *
+     * @param s string字符串
+     * @return int整型
+     */
+    public int calculate (String s) {
+        // write code here
+        s = s.replaceAll(" ", "");
+
+        ArrayDeque<Integer> nums = new ArrayDeque<>();
+        ArrayDeque<Character> opts = new ArrayDeque<>();
+        nums.addLast(0);
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                opts.addLast('(');
+            } else if (s.charAt(i) == ')') {
+                while (!opts.isEmpty() && opts.peekLast() != '(') {
+                    calcs(nums, opts);
+                }
+                opts.pollLast();
+            } else if (Character.isDigit(s.charAt(i))) {
+                int num = 0;
+                while (i < s.length() && Character.isDigit(s.charAt(i))) {
+                    num = num * 10 + (s.charAt(i++) - '0');
+                }
+                nums.addLast(num);
+                i--;
+            } else {
+                if (i > 0 && (s.charAt(i - 1) == '(' || s.charAt(i - 1) == '+' || s.charAt(i - 1) == '-')) {
+                    nums.addLast(0);
+                }
+                while (!opts.isEmpty() && opts.peekLast() != '(') {
+                    calcs(nums, opts);
+                }
+                opts.addLast(s.charAt(i));
+            }
+        }
+        // 将剩余的计算完
+        while (!opts.isEmpty() && opts.peekLast() != '(') {
+            calcs(nums, opts);
+        }
+        return nums.peekLast();
+    }
+
+
+    void calcs(Deque<Integer> nums, Deque<Character> ops) {
+        if (nums.isEmpty() || nums.size() < 2) {
+            return;
+        }
+        if (ops.isEmpty()) {
+            return;
+        }
+        int b = nums.pollLast(), a = nums.pollLast();
+        char op = ops.pollLast();
+        int ans = 0;
+        if (op == '+') {
+            ans = a + b;
+        } else if (op == '-') {
+            ans = a - b;
+        }
+        nums.addLast(ans);
+    }
 }
