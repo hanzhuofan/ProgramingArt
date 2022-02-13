@@ -45,20 +45,16 @@ public class IsValidString {
     }
 
     public boolean isValidString2(String s) {
-        if (s.charAt(0) == ')' || s.charAt(s.length() - 1) == '(') {
-            return false;
-        }
-        int left = 0, right = 0;
+        int lLeft = 0, lRight = 0, rLeft = 0, rRight = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(' || s.charAt(i) == '*') left++;
-            if (s.charAt(i) == ')') right++;
-            if (left < right) return false;
-        }
-        left = 0; right = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == ')' || s.charAt(i) == '*') right++;
-            if (s.charAt(i) == '(') left++;
-            if (left > right) return false;
+            if (s.charAt(i) == '(' || s.charAt(i) == '*') lLeft++;
+            if (s.charAt(i) == ')') lRight++;
+            if (lLeft < lRight) return false;
+
+            int j = s.length() - 1 - i;
+            if (s.charAt(j) == ')' || s.charAt(j) == '*') rRight++;
+            if (s.charAt(j) == '(') rLeft++;
+            if (rLeft > rRight) return false;
         }
         return true;
     }
