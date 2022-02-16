@@ -14,6 +14,12 @@ public class LIS {
         System.out.println(Arrays.toString(lis.LIS(new int[] {1, 2, 8, 6, 4})));
         System.out.println(Arrays.toString(lis.LIS2(new int[] {2, 1, 5, 3, 6, 4, 8, 9, 7})));
         System.out.println(Arrays.toString(lis.LIS2(new int[] {1, 2, 8, 6, 4})));
+        System.out.println(lis.LIS3(new int[] {2, 1, 5, 3, 6, 4, 8, 9, 7}));
+        System.out.println(lis.LIS3(new int[] {1, 2, 8, 6, 4}));
+        System.out.println(lis.LIS3(new int[] {1,2,3,4,3,5}));
+        System.out.println(lis.LIS4(new int[] {2, 1, 5, 3, 6, 4, 8, 9, 7}));
+        System.out.println(lis.LIS4(new int[] {1, 2, 8, 6, 4}));
+        System.out.println(lis.LIS4(new int[] {1,2,3,4,3,5}));
     }
 
     /**
@@ -99,5 +105,74 @@ public class LIS {
             }
         }
         return ans.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    /**
+     * 给定一个长度为 n 的数组 arr，求它的最长严格上升子序列的长度。
+     * 所谓子序列，指一个数组删掉一些数（也可以不删）之后，形成的新数组。例如 [1,5,3,7,3] 数组，其子序列有：[1,3,3]、[7] 等。但 [1,6]、[1,3,5] 则不是它的子序列。
+     * 数据范围： 0≤n≤1000
+     * 要求：时间复杂度 O(n^2)， 空间复杂度 O(n)
+     * 给定数组的最长严格上升子序列的长度。
+     *
+     * @param arr int整型一维数组 给定的数组
+     * @return int整型
+     */
+    public int LIS3(int[] arr) {
+        // write code here
+        if (arr.length == 0) {
+            return 0;
+        }
+        int[] dp = new int[arr.length];
+        int ans = 1;
+        dp[0] = 1;
+        for (int i = 1; i < arr.length; i++) {
+            dp[i] = 1;
+            for (int j = i; j >= 0; j--) {
+                if (arr[i] > arr[j]) {
+                    dp[i] = Math.max(dp[j] + 1, dp[i]);
+                }
+            }
+            ans = Math.max(ans, dp[i]);
+        }
+        return ans;
+    }
+
+    /**
+     * 给定一个长度为 n 的数组 a，求它的最长严格上升子序列的长度。
+     * 所谓子序列，指一个数组删掉一些数（也可以不删）之后，形成的新数组。例如 [1,5,3,7,3] 数组，其子序列有：[1,3,3]、[7] 等。但 [1,6]、[1,3,5] 则不是它的子序列。
+     * 数据范围： 0≤n≤1000
+     * 要求：时间复杂度 O(nlogn)， 空间复杂度 O(n)
+     * 给定数组的最长严格上升子序列的长度。
+     *
+     * @param a int整型一维数组 给定的数组
+     * @return int整型
+     */
+    public int LIS4(int[] a) {
+        // write code here
+        if (a.length == 0) {
+            return 0;
+        }
+        int[] sdp = new int[a.length + 1];
+        int[] dp = new int[a.length];
+        int ans = 1;
+        dp[0] = 1;
+        sdp[1] = a[0];
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] > sdp[ans]) {
+                dp[i] = ans + 1;
+            } else {
+                // 可以改为二分查找法
+                dp[i] = 1;
+                for (int j = ans; j >= 0; j--) {
+                    if (a[i] > sdp[j]) {
+                        dp[i] = j + 1;
+                        break;
+                    }
+                }
+            }
+            sdp[dp[i]] = a[i];
+            ans = Math.max(ans, dp[i]);
+        }
+        return ans;
     }
 }

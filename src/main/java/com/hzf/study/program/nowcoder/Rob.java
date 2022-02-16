@@ -1,5 +1,9 @@
 package com.hzf.study.program.nowcoder;
 
+import lombok.EqualsAndHashCode;
+
+import java.util.HashMap;
+
 /**
  * @author zhuofan.han
  * @date 2022/2/16
@@ -64,7 +68,22 @@ public class Rob {
      */
     public static int rob3(TreeNode root) {
         // write code here
-        return 0;
+        HashMap<TreeNode, Integer> dp0 = new HashMap<>();
+        HashMap<TreeNode, Integer> dp1 = new HashMap<>();
+        dp0.put(null, 0);
+        dp1.put(null, 0);
+        rob(root, dp0, dp1);
+        return Math.max(dp0.get(root), dp1.get(root));
+    }
+
+    private static void rob(TreeNode root, HashMap<TreeNode, Integer> dp0, HashMap<TreeNode, Integer> dp1) {
+        if (root == null) {
+            return ;
+        }
+        rob(root.left, dp0, dp1);
+        rob(root.right, dp0, dp1);
+        dp0.put(root, root.val + dp1.get(root.left) + dp1.get(root.right));
+        dp1.put(root, Math.max(dp0.get(root.left), dp1.get(root.left)) + Math.max(dp0.get(root.right), dp1.get(root.right)));
     }
 
     public static void main(String[] args) {
@@ -77,6 +96,7 @@ public class Rob {
         System.out.println(rob2(new int[]{69,27,25,44,1,16,76,98,22,52}));
     }
 
+    @EqualsAndHashCode
     static class TreeNode {
         int val = 0;
         TreeNode left = null;
