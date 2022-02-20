@@ -8,6 +8,8 @@ public class LCS {
     public static void main(String[] args) {
         LCS commonStr = new LCS();
         System.out.println(commonStr.LCS("2LQ74WK8Ld0x7d8FP8l61pD7Wsz1E9xOMp920hM948eGjL9Kb5KJt80","U08U29zzuodz16CBZ8xfpmmn5SKD80smJbK83F2T37JRqYfE76vh6hrE451uFQ100ye9hog1Y52LDk0L52SuD948eGjLz0htzd5YF9J1Y6oI7562z4T2"));
+        System.out.println(commonStr.LCS5("abcdef","bdcaaade"));
+        System.out.println(commonStr.LCS6("abxcxdxexf","bdcaaade"));
     }
 
     /**
@@ -114,5 +116,77 @@ public class LCS {
         }
         //最字符串进行截取，substring(a,b)中a和b分别表示截取的开始和结束位置
         return str1.substring(maxLastIndex - maxLength + 1, maxLastIndex + 1);
+    }
+
+    /**
+     * 给定两个字符串 s1 和 s2，长度为m和n 。求两个字符串最长公共子序列的长度。
+     * 所谓子序列，指一个字符串删掉部分字符（也可以不删）形成的字符串。例如：字符串 "arcaea" 的子序列有 "ara" 、 "rcaa" 等。但 "car" 、 "aaae" 则不是它的子序列。
+     * 所谓 s1 和 s2 的最长公共子序列，即一个最长的字符串，它既是 s1 的子序列，也是 s2 的子序列。
+     *
+     * s1和s2最长公共子序列的长度
+     * @param s1 string字符串
+     * @param s2 string字符串
+     * @return int整型
+     */
+    public int LCS5(String s1, String s2) {
+        // write code here
+        int[][] dp = new int[s1.length()][s2.length()];
+        int ans = 0;
+        for (int i = 0; i < s1.length(); i++) {
+            for (int j = 0; j < s2.length(); j++) {
+                if (s1.charAt(i) == s2.charAt(j)) {
+                    dp[i][j] = (i == 0 || j == 0 ? 0 : dp[i - 1][j - 1]) + 1;
+                } else {
+                    dp[i][j] = Math.max(j == 0 ? 0 : dp[i][j - 1], i == 0 ? 0 : dp[i - 1][j]);
+                }
+                ans = Math.max(ans, dp[i][j]);
+            }
+        }
+        return ans;
+    }
+
+    public String LCS6(String s1, String s2) {
+        // write code here
+        int[][] dp = new int[s1.length()][s2.length()];
+        int ans = 0;
+        int n = 0, m = 0;
+        for (int i = 0; i < s1.length(); i++) {
+            for (int j = 0; j < s2.length(); j++) {
+                if (s1.charAt(i) == s2.charAt(j)) {
+                    dp[i][j] = (i == 0 || j == 0 ? 0 : dp[i - 1][j - 1]) + 1;
+                } else {
+                    dp[i][j] = Math.max(j == 0 ? 0 : dp[i][j - 1], i == 0 ? 0 : dp[i - 1][j]);
+                }
+                if (dp[i][j] > ans) {
+                    ans = dp[i][j];
+                    n = i;
+                    m = j;
+                }
+            }
+        }
+
+        if (ans == 0) {
+            return "-1";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        while (n >= 0 && m >= 0 && dp[n][m] > 0) {
+            int up = n == 0 ? 0 : dp[n - 1][m];
+            int left = m == 0 ? 0 : dp[n][m - 1];
+            if (dp[n][m] > left && dp[n][m] > up) {
+                sb.append(s1.charAt(n));
+                n--;
+                m--;
+            } else if (dp[n][m] == left && dp[n][m] == up) {
+                n--;
+                m--;
+            } else if (dp[n][m] == left){
+                m--;
+            } else if (dp[n][m] == up) {
+                n--;
+            }
+        }
+
+        return sb.reverse().toString();
     }
 }
