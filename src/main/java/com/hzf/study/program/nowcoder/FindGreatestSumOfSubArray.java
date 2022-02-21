@@ -23,11 +23,22 @@ public class FindGreatestSumOfSubArray {
         int tmp = 0;
         for (int a : array) {
             tmp += a;
-            if (ans < tmp) {
-                ans = tmp;
-            }
+            ans = Math.max(ans, tmp);
             if (tmp < 0) {
                 tmp = 0;
+            }
+        }
+        return ans;
+    }
+
+    public int FindGreatestSumOfSubArray3(int[] array) {
+        int ans = array[0];
+        int[] dp = new int[array.length + 1];
+        for (int i = 0; i < array.length; i++) {
+            dp[i + 1] = dp[i] + array[i];
+            ans = Math.max(ans, dp[i + 1]);
+            if (dp[i + 1] < 0) {
+                dp[i + 1] = 0;
             }
         }
         return ans;

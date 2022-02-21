@@ -4,12 +4,12 @@ package com.hzf.study.program.nowcoder;
  * @author zhuofan.han
  * @date 2022/1/29
  */
-public class LongestPalindrome {
+public class GetLongestPalindrome {
     public static void main(String[] args) {
-        LongestPalindrome longestPalindrome = new LongestPalindrome();
-        System.out.println(longestPalindrome.getLongestPalindrome("ababc"));
-        System.out.println(longestPalindrome.getLongestPalindrome("acbdcbbbdbdaaccbcacdacdccababcddabddaaaaaaabdbabcdddaacabacbacbbdabdacddbbadaacbbdcbccacacdabcabacacbbbdcccacdcdcdcbcbabdcdacdddbbabcaccddddddabdacaabccdcabcbcbabacaaaccaccaddabbdadcdacdcdbaadbcabdcdcaaacbcadccbbddbaddcaddcaadcbbcbbdcbdadcddabdddcdbddbbdabaaddcaadd"));
-        System.out.println(longestPalindrome.longestPalindrome("acbdcbbbdbdaaccbcacdacdccababcddabddaaaaaaabdbabcdddaacabacbacbbdabdacddbbadaacbbdcbccacacdabcabacacbbbdcccacdcdcdcbcbabdcdacdddbbabcaccddddddabdacaabccdcabcbcbabacaaaccaccaddabbdadcdacdcdbaadbcabdcdcaaacbcadccbbddbaddcaddcaadcbbcbbdcbdadcddabdddcdbddbbdabaaddcaadd"));
+        GetLongestPalindrome getLongestPalindrome = new GetLongestPalindrome();
+        System.out.println(getLongestPalindrome.getLongestPalindrome("ababc"));
+        System.out.println(getLongestPalindrome.getLongestPalindrome("acbdcbbbdbdaaccbcacdacdccababcddabddaaaaaaabdbabcdddaacabacbacbbdabdacddbbadaacbbdcbccacacdabcabacacbbbdcccacdcdcdcbcbabdcdacdddbbabcaccddddddabdacaabccdcabcbcbabacaaaccaccaddabbdadcdacdcdbaadbcabdcdcaaacbcadccbbddbaddcaddcaadcbbcbbdcbdadcddabdddcdbddbbdabaaddcaadd"));
+        System.out.println(getLongestPalindrome.longestPalindrome("acbdcbbbdbdaaccbcacdacdccababcddabddaaaaaaabdbabcdddaacabacbacbbdabdacddbbadaacbbdcbccacacdabcabacacbbbdcccacdcdcdcbcbabdcdacdddbbabcaccddddddabdacaabccdcabcbcbabacaaaccaccaddabbdadcdacdcdbaadbcabdcdcaaacbcadccbbddbaddcaddcaadcbbcbbdcbdadcddabdddcdbddbbdabaaddcaadd"));
     }
 
     /**
