@@ -29,6 +29,19 @@ public class Rob {
         }
         return ans;
     }
+    public static long rob4(int[] array) {
+        // write code here
+        long[] dp = new long[array.length];
+        long ans = 0, max = 0;
+        for (int i = 0; i < array.length; i++) {
+            dp[i] = array[i] + max;
+            long left = i < 1 || array[i - 1] < 0 ? 0: dp[i - 1];
+            long right = i < 2 || array[i - 2] < 0 ? (i < 1 || array[i - 1] < 0 ? 0 : dp[i - 1]):  dp[i - 2];
+            max = Math.max(left, right);
+            ans = Math.max(ans, dp[i]);
+        }
+        return ans;
+    }
 
     /**
      * 你是一个经验丰富的小偷，准备偷沿湖的一排房间，每个房间都存有一定的现金，为了防止被发现，你不能偷相邻的两家，即，如果偷了第一家，就不能再偷第二家，如果偷了第二家，那么就不能偷第一家和第三家。沿湖的房间组成一个闭合的圆形，即第一个房间和最后一个房间视为相邻。

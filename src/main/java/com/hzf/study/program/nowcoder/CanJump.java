@@ -118,21 +118,21 @@ public class CanJump {
         if (nums.length == 0) {
             return -1;
         }
-        int n = nums.length;
-        int[] dp = new int[n];
-        Arrays.fill(dp, n);
-        dp[0] = 0;
-        for (int i = 1; i < n; i++) {
-            for (int j = 0; j < i; j++) {
-                if (j + nums[j] >= i) {
-                    dp[i] = Math.min(dp[i], dp[j] + 1);
-                }
-            }
-            if (dp[i] == n) {
+
+        int end = 0;
+        int maxPosition = 0;
+        int steps = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (i > maxPosition) {
                 return -1;
+            }
+            maxPosition = Math.max(maxPosition, i + nums[i]);
+            if (i == end) {
+                end = maxPosition;
+                steps++;
             }
         }
 
-        return dp[n - 1];
+        return maxPosition < nums.length - 1 ? -1 : steps;
     }
 }
