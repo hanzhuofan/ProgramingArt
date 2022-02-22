@@ -86,4 +86,51 @@ public class RotateMatrix {
         }
         return ans;
     }
+
+    /**
+     * 给定一个 n 行 m 列矩阵 matrix ，矩阵内所有数均为非负整数。 你需要在矩阵中找到一条最长路径，使这条路径上的元素是递增的。并输出这条最长路径的长度。
+     * 这个路径必须满足以下条件：
+     *
+     * 1. 对于每个单元格，你可以往上，下，左，右四个方向移动。 你不能在对角线方向上移动或移动到边界外。
+     * 2. 你不能走重复的单元格。即每个格子最多只能走一次。
+     *
+     * 递增路径的最大长度
+     * @param matrix int整型二维数组 描述矩阵的每个数
+     * @return int整型
+     */
+    public int solve (int[][] matrix) {
+        // write code here
+        int[][] dp = new int[matrix.length][matrix[0].length];
+        int ans = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                ans = Math.max(ans, dfs(matrix, i, j, -1, dp));
+            }
+        }
+        return ans;
+    }
+
+    private int dfs(int[][] matrix, int i, int j, int target, int[][] dp) {
+        if (matrix[i][j] <= target) {
+            return 0;
+        }
+        if (dp[i][j] != 0) {
+            return dp[i][j];
+        }
+        int max = 0;
+        if (i > 0) {
+            max = Math.max(max, dfs(matrix, i - 1, j, matrix[i][j], dp));
+        }
+        if (j > 0) {
+            max = Math.max(max, dfs(matrix, i, j - 1, matrix[i][j], dp));
+        }
+        if (i < matrix.length - 1) {
+            max = Math.max(max, dfs(matrix, i + 1, j, matrix[i][j], dp));
+        }
+        if (j < matrix[0].length - 1) {
+            max = Math.max(max, dfs(matrix, i, j + 1, matrix[i][j], dp));
+        }
+        dp[i][j] = max + 1;
+        return dp[i][j];
+    }
 }
