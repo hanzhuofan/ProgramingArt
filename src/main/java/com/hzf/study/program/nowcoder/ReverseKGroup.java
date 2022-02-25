@@ -1,5 +1,7 @@
 package com.hzf.study.program.nowcoder;
 
+import java.util.Stack;
+
 /**
  * @author zhuofan.han
  * @date 2022/2/9
@@ -11,14 +13,15 @@ public class ReverseKGroup {
         ListNode listNode2 = new ListNode(2);
         ListNode listNode3 = new ListNode(3);
         ListNode listNode4 = new ListNode(4);
-        // ListNode listNode5 = new ListNode(5);
+         ListNode listNode5 = new ListNode(5);
         listNode.next = listNode2;
         listNode2.next = listNode3;
         listNode3.next = listNode4;
-        // listNode4.next = listNode5;
+         listNode4.next = listNode5;
         // System.out.println(new ReverseKGroup().reverseKGroup(listNode, 2));
         // System.out.println(new ReverseKGroup().reverseKGroup(listNode, 3));
-        System.out.println(new ReverseKGroup().reverseKGroup(listNode, 2));
+//        System.out.println(new ReverseKGroup().reverseKGroup(listNode, 2));
+        System.out.println(new ReverseKGroup().reverseKGroup2(listNode, 5));
     }
 
     /**
@@ -69,6 +72,45 @@ public class ReverseKGroup {
                     end = tend;
                 } else if (head == null) {
                     end.next = tmp;
+                    break;
+                }
+            }
+        }
+        return ans;
+    }
+    public ListNode reverseKGroup2(ListNode head, int k) {
+        // write code here
+        ListNode ans = head, tmp = head, end = null;
+        int length = 0;
+        while (tmp != null) {
+            tmp = tmp.next;
+            length++;
+        }
+
+        if (k > length) {
+            return ans;
+        }
+
+        Stack<ListNode> stack = new Stack<>();
+        for (int i = 0; i < length; i++) {
+            stack.push(head);
+            head = head.next;
+            stack.peek().next = null;
+            if (stack.size() == k) {
+                ListNode pop = stack.pop();
+                if (i == k - 1) {
+                    ans = pop;
+                } else if (end != null) {
+                    end.next = pop;
+                }
+                end = pop;
+                while (!stack.isEmpty()) {
+                    pop.next = stack.pop();
+                    pop = pop.next;
+                    end = pop;
+                }
+                if (i + k >= length) {
+                    end.next = head;
                     break;
                 }
             }
