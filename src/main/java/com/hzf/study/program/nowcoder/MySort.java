@@ -39,17 +39,17 @@ public class MySort {
         }
         int base = arr[begin], left = begin, right = end;
         while (left < right) {
-            while (arr[left] < base && left < right) {
-                left++;
-            }
-            if (left < right) {
-                arr[left] = arr[right];
-            }
             while (base < arr[right] && left < right) {
                 right--;
             }
             if (left < right) {
-                arr[right] = arr[left];
+                arr[left++] = arr[right];
+            }
+            while (arr[left] < base && left < right) {
+                left++;
+            }
+            if (left < right) {
+                arr[right--] = arr[left];
             }
         }
         arr[left] = base;
@@ -57,8 +57,39 @@ public class MySort {
         qsort(arr, left + 1, end);
     }
 
+    public static int[] MySort3(int[] arr) {
+        // write code here
+        sort(arr, new int[arr.length], 0, arr.length - 1);
+        return arr;
+    }
+
+    private static void sort(int[] arr, int[] tmp, int begin, int end) {
+        if (begin >= end) return;
+        int mid = begin + (end - begin) / 2;
+        sort(arr, tmp, begin, mid);
+        sort(arr, tmp, mid + 1, end);
+
+        System.arraycopy(arr, begin, tmp, begin, end + 1 - begin);
+        int left = begin, right = mid + 1;
+        for (int i = begin; i <= end; i++) {
+            if (left > mid) {
+                arr[i] = tmp[right++];
+            } else if (right > end) {
+                arr[i] = tmp[left++];
+            } else if (tmp[left] > tmp[right]) {
+                arr[i] = tmp[right++];
+            } else {
+                arr[i] = tmp[left++];
+            }
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println(Arrays.toString(MySort(new int[] {5,2,3,1,4})));
         System.out.println(Arrays.toString(MySort2(new int[] {5,2,3,1,4})));
+        System.out.println(Arrays.toString(MySort(new int[] {5,1,6,2,5})));
+        System.out.println(Arrays.toString(MySort2(new int[] {5,1,6,2,5})));
+        System.out.println(Arrays.toString(MySort3(new int[] {5,2,3,1,4})));
+        System.out.println(Arrays.toString(MySort3(new int[] {5,1,6,2,5})));
     }
 }
