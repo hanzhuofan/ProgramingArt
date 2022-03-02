@@ -1,5 +1,6 @@
 package com.hzf.study.program.nowcoder;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -21,8 +22,12 @@ public class MergeList {
         ListNode list6 = new ListNode(6);
         list2.next = list4;
         list4.next = list6;
-        ListNode merge = test.Merge(list1, list2);
-        System.out.println(merge);
+//        ListNode merge = test.Merge(list1, list2);
+//        System.out.println(merge);
+        ArrayList<ListNode> lists = new ArrayList<>();
+        lists.add(list1);
+        lists.add(list2);
+        System.out.println(test.mergeKLists(lists));
     }
     public ListNode Merge(ListNode list1,ListNode list2) {
         if (list1 == null && list2 == null) {
@@ -64,6 +69,40 @@ public class MergeList {
                 A[i] = B[n-- - 1];
             }
         }
+    }
+
+    public ListNode mergeKLists(ArrayList<ListNode> lists) {
+        ListNode ans = null;
+        for (ListNode node : lists) {
+            ans = merge(ans, node);
+        }
+        return ans;
+    }
+
+    private ListNode merge(ListNode node1, ListNode node2) {
+        ListNode ans = new ListNode(-1);
+        ListNode tmp = ans;
+        while (node1 != null || node2 != null) {
+            if (node1 == null) {
+                tmp.next = node2;
+                break;
+            }
+
+            if (node2 == null) {
+                tmp.next = node1;
+                break;
+            }
+
+            if (node1.val < node2.val) {
+                tmp.next = node1;
+                node1 = node1.next;
+            } else {
+                tmp.next = node2;
+                node2 = node2.next;
+            }
+            tmp = tmp.next;
+        }
+        return ans.next;
     }
 
     static class ListNode {
