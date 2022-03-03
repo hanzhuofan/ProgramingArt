@@ -7,6 +7,7 @@ public class MathSum {
     public static void main(String[] args) {
         MathSum mathSum = new MathSum();
         System.out.println(mathSum.solve("(2*(3-4))*5"));
+        System.out.println(multiply("733064366", "459309139"));
     }
 
     /**
@@ -180,5 +181,33 @@ public class MathSum {
             ans = a - b;
         }
         nums.addLast(ans);
+    }
+
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     * @param s string字符串 第一个整数
+     * @param t string字符串 第二个整数
+     * @return string字符串
+     */
+    public static String multiply (String s, String t) {
+        // write code here
+        if ("0".equals(s) || "0".equals(t)) return "0";
+        int[] dp = new int[s.length() + t.length()];
+        for (int i = s.length() - 1; i >= 0; i--) {
+            for (int j = t.length() - 1; j >= 0; j--) {
+                dp[i + j + 1] += (s.charAt(i) - '0') * (t.charAt(j) - '0');
+                dp[i + j] += dp[i + j + 1] / 10;
+                dp[i + j + 1] = dp[i + j + 1] % 10;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < dp.length; i++) {
+            if (i == 0 && dp[i] == 0) {
+                continue;
+            }
+            sb.append(dp[i]);
+        }
+        return sb.toString();
     }
 }
