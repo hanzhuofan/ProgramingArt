@@ -24,4 +24,16 @@ public class Array3MinNum {
             System.out.println(objects);
         }
     }
+
+    /**
+     * 最大数
+     * @param nums int整型一维数组
+     * @return string字符串
+     */
+    public String solve (int[] nums) {
+        // write code here
+        String reduce = Arrays.stream(nums).mapToObj(String::valueOf).sorted((a, b) -> (b + a).compareTo(a + b))
+            .reduce("", (a, b) -> a + b);
+        return reduce.charAt(0) == '0' ? "0" : reduce;
+    }
 }
