@@ -1,6 +1,7 @@
 package com.hzf.study.program.nowcoder;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  * @author zhuofan.han
@@ -58,6 +59,37 @@ public class ZhiZiTwoTree {
             sort = !sort;
         } while (left != right);
         return ans;
+    }
+    public static void printTree(TreeNode root) {
+        Stack<TreeNode> nodes = new Stack<>();
+        nodes.push(root);
+        boolean fx = false;
+        int count = 1;
+        while (!nodes.isEmpty()) {
+            Stack<TreeNode> tmp = new Stack<>();
+            for (int i = 0; i < count; i++) {
+                TreeNode node = nodes.pop();
+                System.out.println(node.val);
+                if (fx) {
+                    if (node.right != null) {
+                        tmp.push(node.right);
+                    }
+                    if (node.left != null) {
+                        tmp.push(node.left);
+                    }
+                } else {
+                    if (node.left != null) {
+                        tmp.push(node.left);
+                    }
+                    if (node.right != null) {
+                        tmp.push(node.right);
+                    }
+                }
+            }
+            nodes = tmp;
+            fx = !fx;
+            count = nodes.size();
+        }
     }
 
     static class TreeNode {
